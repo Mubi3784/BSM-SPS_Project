@@ -1,27 +1,27 @@
 /* ============================================================
-   SPS-BMS HR Dashboard — filters.css
+   SPS-BMS HR Dashboard — firstThreeDivs.css
    ============================================================ */
 
 /* ── CSS Variables ──────────────────────────────────────────── */
 :root {
-  --f-blue:           #0076A8;
-  --f-blue-dark:      #005f87;
-  --f-blue-light:     #e6f3f8;
-  --f-bg-page:        #F8F9FA;
-  --f-bg-card:        #FFFFFF;
-  --f-border:         #E9ECEF;
-  --f-border-input:   #D8DEE4;
-  --f-border-hover:   #b0c4d0;
-  --f-text-dark:      #1a2d3d;
-  --f-text-mid:       #4a5568;
-  --f-text-muted:     #8a9ab0;
+  --f-blue:             #0076A8;
+  --f-blue-dark:        #005f87;
+  --f-blue-light:       #e6f3f8;
+  --f-bg-page:          #F8F9FA;
+  --f-bg-card:          #FFFFFF;
+  --f-border:           #E9ECEF;
+  --f-border-input:     #D8DEE4;
+  --f-border-hover:     #b0c4d0;
+  --f-text-dark:        #1a2d3d;
+  --f-text-mid:         #4a5568;
+  --f-text-muted:       #8a9ab0;
   --f-text-placeholder: #9eaab7;
-  --f-card-radius:    10px;
-  --f-btn-radius:     20px;
-  --f-input-radius:   6px;
-  --f-shadow-card:    0 1px 4px rgba(0, 0, 0, 0.06);
-  --f-font:           "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
-  --f-transition:     0.18s ease;
+  --f-card-radius:      10px;
+  --f-btn-radius:       20px;
+  --f-input-radius:     6px;
+  --f-shadow-card:      0 1px 4px rgba(0, 0, 0, 0.06);
+  --f-font:             "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --f-transition:       0.18s ease;
 }
 
 /* ── Page Body Background ──────────────────────────────────── */
@@ -48,7 +48,6 @@ body,
   margin-bottom: 14px;
 }
 
-/* Base pill button */
 .sps-btn-toggle {
   display: inline-flex;
   align-items: center;
@@ -69,7 +68,6 @@ body,
   line-height: 1;
 }
 
-/* Filled / Active state */
 .sps-btn-toggle--active {
   background-color: var(--f-blue);
   color: #ffffff;
@@ -84,7 +82,6 @@ body,
   outline: none;
 }
 
-/* Outline / Inactive state */
 .sps-btn-toggle--outline {
   background-color: #ffffff;
   color: var(--f-text-dark);
@@ -153,9 +150,42 @@ body,
 /* Right side */
 .sps-header-card__right {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* + Add New button */
+/* ── NEW: "Import JSON" upload button ── */
+.sps-btn-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  color: var(--f-blue);
+  border: 1px solid var(--f-blue);
+  border-radius: 6px;
+  font-family: var(--f-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background-color var(--f-transition),
+              color var(--f-transition),
+              box-shadow var(--f-transition);
+  white-space: nowrap;
+}
+.sps-btn-upload:hover,
+.sps-btn-upload:focus {
+  background-color: var(--f-blue);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 118, 168, 0.3);
+  outline: none;
+}
+.sps-btn-upload i { font-size: 0.72rem; }
+
+/* ── "+ Add New" button ── */
 .sps-btn-add {
   display: inline-flex;
   align-items: center;
@@ -180,9 +210,7 @@ body,
   box-shadow: 0 3px 10px rgba(0, 118, 168, 0.3);
   outline: none;
 }
-.sps-btn-add i {
-  font-size: 0.72rem;
-}
+.sps-btn-add i { font-size: 0.72rem; }
 
 
 /* ════════════════════════════════════════════════════════════
@@ -194,14 +222,6 @@ body,
   border-radius: var(--f-card-radius);
   box-shadow: var(--f-shadow-card);
   padding: 18px 20px 16px;
-}
-
-/* Row spacing */
-.sps-filter-row {
-  /* Bootstrap g-3 handles column gaps; we only manage vertical row gap */
-}
-.sps-filter-row--second {
-  margin-top: 0; /* g-3 on the row already provides gap */
 }
 
 /* ── Individual Filter Group (label + select) ── */
@@ -225,14 +245,13 @@ body,
   text-overflow: ellipsis;
 }
 
-/* ── Select Wrapper (positions custom arrow) ── */
+/* ── Select Wrapper ── */
 .sps-select-wrap {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-/* Custom down-arrow icon */
 .sps-select-arrow {
   position: absolute;
   right: 11px;
@@ -244,16 +263,12 @@ body,
   transition: color var(--f-transition), transform var(--f-transition);
 }
 
-/* Rotate arrow when select is focused */
 .sps-select-wrap:focus-within .sps-select-arrow {
   color: var(--f-blue);
   transform: translateY(-50%) rotate(180deg);
 }
 
-/* Filled state arrow color */
-.sps-select-wrap--filled .sps-select-arrow {
-  color: var(--f-blue);
-}
+.sps-select-wrap--filled .sps-select-arrow { color: var(--f-blue); }
 
 /* ── Select Element ── */
 .sps-select {
@@ -262,85 +277,116 @@ body,
   -moz-appearance: none;
   width: 100%;
   height: 36px;
-  padding: 0 32px 0 10px;    /* right padding reserves space for arrow */
+  padding: 0 32px 0 10px;
   background-color: #ffffff;
   border: 1px solid var(--f-border-input);
   border-radius: var(--f-input-radius);
   font-family: var(--f-font);
   font-size: 0.8rem;
   font-weight: 400;
-  color: var(--f-text-placeholder);  /* placeholder color until value selected */
+  color: var(--f-text-placeholder);
   cursor: pointer;
   transition: border-color var(--f-transition),
               box-shadow var(--f-transition),
               color var(--f-transition);
   outline: none;
-  /* Hide native dropdown arrow in IE/Edge */
   background-image: none;
 }
 
-/* When a real value is selected (via JS class) */
-.sps-select-wrap--filled .sps-select {
-  color: var(--f-text-dark);
-}
-
-.sps-select:hover {
-  border-color: var(--f-border-hover);
-}
-
+.sps-select-wrap--filled .sps-select { color: var(--f-text-dark); }
+.sps-select:hover { border-color: var(--f-border-hover); }
 .sps-select:focus {
   border-color: var(--f-blue);
   box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.12);
   color: var(--f-text-dark);
 }
 
-/* Style the placeholder option */
-.sps-select option[value=""][disabled] {
-  color: var(--f-text-placeholder);
+.sps-select option[value=""][disabled] { color: var(--f-text-placeholder); }
+.sps-select option:not([disabled]) { color: var(--f-text-dark); font-size: 0.8rem; }
+
+
+/* ── NEW: Filter action row (Show + Clear buttons) ── */
+.sps-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--f-border);
 }
 
-/* Style regular options */
-.sps-select option:not([disabled]) {
-  color: var(--f-text-dark);
+.sps-btn-filter-show {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 18px;
+  background-color: var(--f-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--f-font);
   font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--f-transition), box-shadow var(--f-transition);
+  white-space: nowrap;
 }
+.sps-btn-filter-show:hover,
+.sps-btn-filter-show:focus {
+  background-color: var(--f-blue-dark);
+  box-shadow: 0 3px 8px rgba(0, 118, 168, 0.28);
+  outline: none;
+}
+.sps-btn-filter-show i { font-size: 0.72rem; }
+
+.sps-btn-filter-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  color: var(--f-text-mid);
+  border: 1px solid #D0D7DE;
+  border-radius: 6px;
+  font-family: var(--f-font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--f-transition),
+              color var(--f-transition),
+              background-color var(--f-transition);
+  white-space: nowrap;
+}
+.sps-btn-filter-clear:hover,
+.sps-btn-filter-clear:focus {
+  border-color: #e04848;
+  color: #b52a2a;
+  background-color: #fff3f3;
+  outline: none;
+}
+.sps-btn-filter-clear i { font-size: 0.72rem; }
 
 
 /* ════════════════════════════════════════════════════════════
    RESPONSIVE TWEAKS
    ════════════════════════════════════════════════════════════ */
-
-/* Tablet (sm–lg): tighten card padding */
 @media (max-width: 991.98px) {
-  .sps-page-container {
-    padding: 14px 14px 20px;
-  }
-  .sps-header-card {
-    padding: 12px 16px;
-  }
-  .sps-filter-card {
-    padding: 14px 16px 14px;
-  }
-  .sps-header-card__title {
-    font-size: 0.95rem;
-  }
+  .sps-page-container { padding: 14px 14px 20px; }
+  .sps-header-card    { padding: 12px 16px; }
+  .sps-filter-card    { padding: 14px 16px 14px; }
+  .sps-header-card__title { font-size: 0.95rem; }
 }
 
-/* Mobile (xs–sm): allow title to wrap */
 @media (max-width: 575.98px) {
   .sps-header-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  .sps-header-card__title {
-    white-space: normal;
-    font-size: 0.9rem;
-  }
-  .sps-header-card__right {
-    align-self: flex-start;
-  }
-  .sps-filter-label {
-    white-space: normal;
-  }
+  .sps-header-card__title { white-space: normal; font-size: 0.9rem; }
+  .sps-header-card__right { align-self: flex-start; flex-wrap: wrap; }
+  .sps-filter-label       { white-space: normal; }
+  .sps-filter-actions     { flex-wrap: wrap; }
 }

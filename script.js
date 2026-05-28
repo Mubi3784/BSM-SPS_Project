@@ -1,5 +1,5 @@
 /**
- * SPS-BMS Navbar — script.js
+ * SPS-BMS Navbar & Filter Panel — script.js
  * Requires: jQuery 3+, Bootstrap 5
  *
  * Features:
@@ -8,13 +8,17 @@
  *  3. Close all dropdowns when clicking outside the navbar
  *  4. Keyboard accessibility: Escape closes open dropdown
  *  5. Hover-open on desktop (≥ xl breakpoint), click on mobile
+ *  6. Toggle buttons (All / Active Only) — wired to table filter
+ *  7. Dropdown filter selects — wired to live table filter
+ *  8. "Show" filter button — applies panel filters
+ *  9. "Clear Filters" button — resets all panel selects
+ * 10. "Import JSON" button — triggers hidden file input
  */
 
 $(function () {
 
   /* ── 1. Highlight Active Link ───────────────────────────────── */
   var currentPath = window.location.pathname.split('/').pop() || 'index.html';
-
   $('#spsNavbar .sps-nav-link').each(function () {
     var href = $(this).attr('href');
     if (href && href !== '#' && href === currentPath) {
@@ -25,7 +29,6 @@ $(function () {
 
 
   /* ── 2. Accordion Dropdowns ─────────────────────────────────── */
-  // When a dropdown opens, close every other open dropdown
   $('#spsNavbar').on('show.bs.dropdown', '.sps-dropdown', function () {
     $('#spsNavbar .sps-dropdown.show').not(this).each(function () {
       var bsInstance = bootstrap.Dropdown.getInstance(
@@ -63,19 +66,14 @@ $(function () {
 
 
   /* ── 5. Hover-Open on Desktop (≥ 1200 px) ───────────────────── */
-  function isDesktop() {
-    return window.innerWidth >= 1200;
-  }
+  function isDesktop() { return window.innerWidth >= 1200; }
 
-  // Mouseenter: open dropdown
   $('#spsNavbar').on('mouseenter.spsHover', '.sps-dropdown', function () {
     if (!isDesktop()) return;
     var $toggle = $(this).find('[data-bs-toggle="dropdown"]');
-    var bsInstance = bootstrap.Dropdown.getOrCreateInstance($toggle[0]);
-    bsInstance.show();
+    bootstrap.Dropdown.getOrCreateInstance($toggle[0]).show();
   });
 
-  // Mouseleave: close dropdown after a tiny delay (allows cursor travel into menu)
   $('#spsNavbar').on('mouseleave.spsHover', '.sps-dropdown', function () {
     if (!isDesktop()) return;
     var $item = $(this);
@@ -87,11 +85,10 @@ $(function () {
     }, 120));
   });
 
-  // Re-enter the menu before timer fires? Cancel the close.
   $('#spsNavbar').on('mouseenter.spsHover', '.sps-dropdown-menu', function () {
-    var $item = $(this).closest('.sps-dropdown');
-    clearTimeout($item.data('leaveTimer'));
+    clearTimeout($(this).closest('.sps-dropdown').data('leaveTimer'));
   });
+
   $('#spsNavbar').on('mouseleave.spsHover', '.sps-dropdown-menu', function () {
     if (!isDesktop()) return;
     var $item = $(this).closest('.sps-dropdown');
@@ -104,10 +101,9 @@ $(function () {
   });
 
 
-  /* ── 6. Disable hover on window resize to mobile ────────────── */
+  /* ── 6. Disable hover on resize to mobile ───────────────────── */
   $(window).on('resize.spsNavbar', function () {
     if (!isDesktop()) {
-      // Ensure any open dropdowns are closed gracefully when resizing to mobile
       $('#spsNavbar .sps-dropdown.show').each(function () {
         var bsInstance = bootstrap.Dropdown.getInstance(
           $(this).find('[data-bs-toggle="dropdown"]')[0]
@@ -117,70 +113,87 @@ $(function () {
     }
   });
 
-}); // end document ready
 
-
-
-
-
-
-
-
-
-
-// first three divs🚩
-
-$(function () {
- 
-  /* ── Toggle Buttons ──────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════════════
+     BLOCK 1 — TOGGLE BUTTONS (All / Active Only)
+     Communicates with table.js via custom event
+     ══════════════════════════════════════════════════════════════ */
   var $btnAll        = $('#btnAll');
   var $btnActiveOnly = $('#btnActiveOnly');
- 
+
   $btnAll.on('click', function () {
     $btnAll.addClass('sps-btn-toggle--active').removeClass('sps-btn-toggle--outline')
            .attr('aria-pressed', 'true');
     $btnActiveOnly.addClass('sps-btn-toggle--outline').removeClass('sps-btn-toggle--active')
                   .attr('aria-pressed', 'false');
-    // Hook: trigger your data-fetch / filter logic here
+    // FIX: Notify table.js to show all records (not just "Active" status)
     $(document).trigger('sps:filterMode', ['all']);
   });
- 
+
   $btnActiveOnly.on('click', function () {
     $btnActiveOnly.addClass('sps-btn-toggle--active').removeClass('sps-btn-toggle--outline')
                   .attr('aria-pressed', 'true');
     $btnAll.addClass('sps-btn-toggle--outline').removeClass('sps-btn-toggle--active')
            .attr('aria-pressed', 'false');
+    // FIX: Notify table.js to filter only status === 'Active'
     $(document).trigger('sps:filterMode', ['active']);
   });
- 
- 
-  /* ── Dropdown Change → visual "has-value" state ─────────── */
-  $('.sps-select').on('change', function () {
+
+
+  /* ══════════════════════════════════════════════════════════════
+     BLOCK 3 — FILTER PANEL
+     ══════════════════════════════════════════════════════════════ */
+
+  /* FIX: Select change → immediately update "has-value" visual AND re-filter */
+  $('#spsFilterForm').on('change', '.sps-select', function () {
     var $wrap = $(this).closest('.sps-select-wrap');
     if ($(this).val()) {
       $wrap.addClass('sps-select-wrap--filled');
     } else {
       $wrap.removeClass('sps-select-wrap--filled');
     }
-    // Hook: re-apply filters on every change
-    $(document).trigger('sps:filterChanged', [collectFilters()]);
+    // Live filter on every dropdown change
+    $(document).trigger('sps:filterChanged', [collectPanelFilters()]);
   });
- 
- 
-  /* ── Collect all filter values ───────────────────────────── */
-  function collectFilters() {
+
+  /* "Show" button — explicitly applies all panel filters */
+  $('#btnShowFilter').on('click', function () {
+    $(document).trigger('sps:filterChanged', [collectPanelFilters()]);
+  });
+
+  /* "Clear Filters" button — resets all selects and re-renders full dataset */
+  $('#btnClearFilters').on('click', function () {
+    $('#spsFilterForm').find('.sps-select').each(function () {
+      $(this).val('');
+      $(this).closest('.sps-select-wrap').removeClass('sps-select-wrap--filled');
+    });
+    $(document).trigger('sps:filterChanged', [collectPanelFilters()]);
+  });
+
+  /* Collect the current state of all panel filter selects */
+  function collectPanelFilters() {
     var filters = {};
     $('#spsFilterForm').find('.sps-select').each(function () {
-      filters[$(this).attr('name')] = $(this).val() || null;
+      var val = $(this).val();
+      filters[$(this).attr('name')] = val || null;
     });
     return filters;
   }
- 
- 
-  /* ── Add New button ──────────────────────────────────────── */
+
+
+  /* ══════════════════════════════════════════════════════════════
+     HEADER CARD BUTTONS
+     ══════════════════════════════════════════════════════════════ */
+
+  /* FIX: "Import JSON" button → triggers hidden file input */
+  $('#btnUploadJson').on('click', function () {
+    $('#jsonFileInput').trigger('click');
+  });
+
+  /* FIX: "Add New" button */
   $('#btnAddNew').on('click', function () {
     $(document).trigger('sps:addNew');
     // Hook: open your modal / navigate to add-employee form here
   });
- 
-});
+
+}); // end document ready
