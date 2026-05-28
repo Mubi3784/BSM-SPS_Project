@@ -1,0 +1,946 @@
+<!-- ============================================================
+     SPS-BMS Top Navigation Bar
+     Dependencies: Bootstrap 5, FontAwesome 6, jQuery
+     ============================================================ -->
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<!-- FontAwesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Custom Navbar CSS -->
+<link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="./css/firstThreeDivs.css">
+<link rel="stylesheet" href="./css/table.css">
+
+<nav class="navbar navbar-expand-xl sps-navbar" id="spsNavbar">
+  <div class="container-fluid px-3">
+
+    <!-- ── Brand Logo ── -->
+    <a class="navbar-brand sps-brand" href="#">SPS-BMS</a>
+
+    <!-- ── Mobile Toggler ── -->
+    <button class="navbar-toggler sps-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavContent"
+            aria-controls="mainNavContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ── Collapsible Content ── -->
+    <div class="collapse navbar-collapse" id="mainNavContent">
+
+      <!-- ── Left Nav Links ── -->
+      <ul class="navbar-nav me-auto align-items-xl-center">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link sps-nav-link" href="#">
+            <i class="fa-solid fa-house sps-icon"></i>
+            <span>Home</span>
+          </a>
+        </li>
+
+        <!-- HR (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropHR" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-users sps-icon"></i>
+            <span>HR</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropHR">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Employees</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Payroll</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Attendance</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Recruitment</a></li>
+            <li><hr class="dropdown-divider sps-divider"></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Reports</a></li>
+          </ul>
+        </li>
+
+        <!-- Accounting (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropAccounting" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-calculator sps-icon"></i>
+            <span>Accounting</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropAccounting">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Invoices</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Expenses</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Ledger</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Tax</a></li>
+          </ul>
+        </li>
+
+        <!-- Legal (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropLegal" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-scale-balanced sps-icon"></i>
+            <span>Legal</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropLegal">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Contracts</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Compliance</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Disputes</a></li>
+          </ul>
+        </li>
+
+        <!-- IT (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropIT" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-desktop sps-icon"></i>
+            <span>IT</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropIT">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Assets</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Help Desk</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Network</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Security</a></li>
+          </ul>
+        </li>
+
+        <!-- Services (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropServices" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-briefcase sps-icon"></i>
+            <span>Services</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropServices">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Managed Services</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Consulting</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Support</a></li>
+          </ul>
+        </li>
+
+        <!-- Extension (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropExtension" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-puzzle-piece sps-icon"></i>
+            <span>Extension</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropExtension">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Add-ons</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Integrations</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Plugins</a></li>
+          </ul>
+        </li>
+
+        <!-- Sales (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropSales" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-chart-line sps-icon"></i>
+            <span>Sales</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropSales">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Leads</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Opportunities</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Quotations</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Orders</a></li>
+          </ul>
+        </li>
+
+        <!-- Marketing (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropMarketing" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-bullhorn sps-icon"></i>
+            <span>Marketing</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropMarketing">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Campaigns</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Analytics</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Content</a></li>
+          </ul>
+        </li>
+
+        <!-- Sterilex (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropSterilex" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-file-lines sps-icon"></i>
+            <span>Sterilex</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropSterilex">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Products</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Orders</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Reports</a></li>
+          </ul>
+        </li>
+
+        <!-- Jaksonde (no dropdown) -->
+        <li class="nav-item">
+          <a class="nav-link sps-nav-link" href="#">
+            <i class="fa-solid fa-file-lines sps-icon"></i>
+            <span>Jaksonde</span>
+          </a>
+        </li>
+
+      </ul>
+      <!-- ── End Left Nav ── -->
+
+      <!-- ── Right: User Profile ── -->
+      <ul class="navbar-nav ms-auto align-items-xl-center">
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link sps-user-link dropdown-toggle d-flex align-items-center gap-2"
+             href="#" id="dropUser" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="sps-avatar">
+              <i class="fa-solid fa-circle-user"></i>
+            </span>
+            <span class="sps-welcome-text">Welcome Abid</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end sps-dropdown-menu" aria-labelledby="dropUser">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">
+              <i class="fa-solid fa-user me-2"></i>My Profile
+            </a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">
+              <i class="fa-solid fa-gear me-2"></i>Settings
+            </a></li>
+            <li><hr class="dropdown-divider sps-divider"></li>
+            <li><a class="dropdown-item sps-dropdown-item sps-logout" href="#">
+              <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+            </a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- ── End Right ── -->
+
+    </div><!-- /#mainNavContent -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<!-- 3 divs -->
+<main class="sps-dashboard-body">
+  <div class="container-fluid sps-page-container">
+ 
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 1 — TOGGLE BUTTONS ROW
+         ══════════════════════════════════════════════════════════ -->
+    <div class="sps-toggle-row">
+      <button type="button" class="sps-btn-toggle sps-btn-toggle--active" id="btnAll"
+              aria-pressed="true">
+        All
+      </button>
+      <button type="button" class="sps-btn-toggle sps-btn-toggle--outline" id="btnActiveOnly"
+              aria-pressed="false">
+        Active Only
+      </button>
+    </div>
+    <!-- /BLOCK 1 -->
+ 
+ 
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 2 — DASHBOARD HEADER CARD
+         ══════════════════════════════════════════════════════════ -->
+    <div class="sps-header-card">
+      <!-- Left: icon + title -->
+      <div class="sps-header-card__left">
+        <span class="sps-header-card__icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-users"></i>
+        </span>
+        <h1 class="sps-header-card__title">Human Resource Management</h1>
+      </div>
+ 
+      <!-- Right: Add New button -->
+      <div class="sps-header-card__right">
+        <button type="button" class="sps-btn-add" id="btnAddNew">
+          <i class="fa-solid fa-plus" aria-hidden="true"></i>
+          Add New
+        </button>
+      </div>
+    </div>
+    <!-- /BLOCK 2 -->
+ 
+ 
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 3 — FILTER SELECTION PANEL
+         ══════════════════════════════════════════════════════════ -->
+    <div class="sps-filter-card">
+      <form id="spsFilterForm" autocomplete="off" novalidate>
+ 
+        <!-- ── Filter Row 1 ── -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-3 sps-filter-row">
+ 
+          <!-- Department -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selDepartment">Select Department</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selDepartment" name="department">
+                  <option value="" selected disabled hidden>Select Department</option>
+                  <option value="engineering">Engineering</option>
+                  <option value="finance">Finance</option>
+                  <option value="hr">Human Resources</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="operations">Operations</option>
+                  <option value="sales">Sales</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Group -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selGroup">Select Group</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selGroup" name="group">
+                  <option value="" selected disabled hidden>Select Group</option>
+                  <option value="administration">Administration</option>
+                  <option value="operations">Operations</option>
+                  <option value="technical">Technical</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Practice -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selPractice">Select Practice</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selPractice" name="practice">
+                  <option value="" selected disabled hidden>Select Practice</option>
+                  <option value="appdev">AppDev</option>
+                  <option value="cloud">Cloud</option>
+                  <option value="corporate">Corporate</option>
+                  <option value="devops">DevOps</option>
+                  <option value="specialist">Specialist</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Grade -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selGrade">Select Grade</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selGrade" name="grade">
+                  <option value="" selected disabled hidden>Select Grade</option>
+                  <option value="g1">Grade 1</option>
+                  <option value="g2">Grade 2</option>
+                  <option value="g3">Grade 3</option>
+                  <option value="g4">Grade 4</option>
+                  <option value="g5">Grade 5</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Location -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selLocation">Select Location</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selLocation" name="location">
+                  <option value="" selected disabled hidden>Select Location</option>
+                  <option value="pk">Pakistan</option>
+                  <option value="ae">UAE</option>
+                  <option value="us">United States</option>
+                  <option value="uk">United Kingdom</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+        <!-- /Filter Row 1 -->
+ 
+        <!-- ── Filter Row 2 ── -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-3 sps-filter-row sps-filter-row--second">
+ 
+          <!-- Type of HR -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selTypeHR">Select Type of HR</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selTypeHR" name="typeHR">
+                  <option value="" selected disabled hidden>Select Type of HR</option>
+                  <option value="associate">Associate</option>
+                  <option value="employee">Employee</option>
+                  <option value="service-provider">Service Provider</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Work Status -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selWorkStatus">Select Work Status</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selWorkStatus" name="workStatus">
+                  <option value="" selected disabled hidden>Select Work Status</option>
+                  <option value="contract">Contract</option>
+                  <option value="fulltime">Full Time</option>
+                  <option value="internship">Internship</option>
+                  <option value="pt-staff">PT-Staff</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Team -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selTeam">Select Team</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selTeam" name="team">
+                  <option value="" selected disabled hidden>Select Team</option>
+                  <option value="operations">Operations</option>
+                  <option value="sales">Sales</option>
+                  <option value="technical">Technical</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Manager -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selManager">Select Manager</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selManager" name="manager">
+                  <option value="" selected disabled hidden>Select Manager</option>
+                  <option value="adnan">Adnan Rasheed</option>
+                  <option value="farrukh">Farrukh Shahzad</option>
+                  <option value="irfan">Irfan Ullah</option>
+                  <option value="mayan">M. Ayan Ijaz</option>
+                  <option value="maryam">Maryam Tasir</option>
+                  <option value="nadeem">Nadeem Masood</option>
+                  <option value="usman">Usman Tufail</option>
+                  <option value="zeeshan">Zeeshan Zulfiqar</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Job Status -->
+          <div class="col">
+            <div class="sps-filter-group">
+              <label class="sps-filter-label" for="selJobStatus">Select Job Status</label>
+              <div class="sps-select-wrap">
+                <select class="sps-select" id="selJobStatus" name="jobStatus">
+                  <option value="" selected disabled hidden>Select Job Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="on-leave">On Leave</option>
+                  <option value="terminated">Terminated</option>
+                </select>
+                <i class="fa-solid fa-chevron-down sps-select-arrow" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+        <!-- /Filter Row 2 -->
+ 
+      </form>
+    </div>
+    <!-- /BLOCK 3 -->
+ 
+  </div><!-- /.sps-page-container -->
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- table -->
+
+<section class="sps-table-section">
+  <div class="container-fluid sps-table-page-container">
+    <div class="sps-table-card">
+ 
+      <!-- ══════════════════════════════════════════════════════
+           LAYER 1 — SEARCH & ACTION BAR
+           ══════════════════════════════════════════════════════ -->
+      <div class="sps-action-bar">
+ 
+        <!-- Left: Date Pickers -->
+        <div class="sps-date-group">
+          <div class="sps-date-field">
+            <label class="sps-date-label" for="dateFrom">Date From</label>
+            <div class="sps-date-input-wrap">
+              <i class="fa-regular fa-calendar sps-date-icon" aria-hidden="true"></i>
+              <input
+                type="text"
+                class="sps-date-input"
+                id="dateFrom"
+                name="dateFrom"
+                value="01/01/2024"
+                placeholder="MM/DD/YYYY"
+                autocomplete="off"
+                aria-label="Date From"
+              >
+            </div>
+          </div>
+ 
+          <div class="sps-date-field">
+            <label class="sps-date-label" for="dateTo">Date To</label>
+            <div class="sps-date-input-wrap">
+              <i class="fa-regular fa-calendar sps-date-icon" aria-hidden="true"></i>
+              <input
+                type="text"
+                class="sps-date-input"
+                id="dateTo"
+                name="dateTo"
+                value="12/31/2024"
+                placeholder="MM/DD/YYYY"
+                autocomplete="off"
+                aria-label="Date To"
+              >
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Center: Search Input -->
+        <div class="sps-search-wrap">
+          <input
+            type="text"
+            class="sps-search-input"
+            id="globalSearch"
+            placeholder="Search by Name, Email, Mobile No, etc."
+            autocomplete="off"
+            aria-label="Search employees"
+          >
+        </div>
+ 
+        <!-- Right: Action Buttons -->
+        <div class="sps-action-buttons">
+          <button type="button" class="sps-btn sps-btn--primary" id="btnSearch" title="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <span>Search</span>
+          </button>
+          <button type="button" class="sps-btn sps-btn--outline" id="btnReset" title="Reset">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+            <span>Reset</span>
+          </button>
+          <button type="button" class="sps-btn sps-btn--outline" id="btnExport" title="Export">
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+            <span>Export</span>
+          </button>
+        </div>
+ 
+      </div>
+      <!-- /LAYER 1 -->
+ 
+      <!-- ══════════════════════════════════════════════════════
+           LAYER 2 — HR DATA TABLE
+           ══════════════════════════════════════════════════════ -->
+      <div class="table-responsive sps-table-responsive">
+        <table class="table sps-table" id="hrTable" aria-label="Human Resource Records">
+          <thead class="sps-thead">
+            <tr>
+              <th class="sps-th sps-th--check" scope="col">
+                <input
+                  type="checkbox"
+                  class="sps-checkbox sps-master-check"
+                  id="masterCheck"
+                  aria-label="Select all rows"
+                  title="Select All"
+                >
+              </th>
+              <th class="sps-th" scope="col">Name</th>
+              <th class="sps-th" scope="col">Type</th>
+              <th class="sps-th" scope="col">Job Status</th>
+              <th class="sps-th" scope="col">Manager</th>
+              <th class="sps-th" scope="col">Company</th>
+              <th class="sps-th" scope="col">Team</th>
+              <th class="sps-th" scope="col">Group</th>
+              <th class="sps-th" scope="col">Practice</th>
+              <th class="sps-th" scope="col">Location</th>
+              <th class="sps-th" scope="col">Mobile No</th>
+              <th class="sps-th" scope="col">Email</th>
+              <th class="sps-th" scope="col">EMG. Access</th>
+              <th class="sps-th" scope="col">Form</th>
+              <th class="sps-th" scope="col">Status</th>
+              <th class="sps-th sps-th--action" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="sps-tbody" id="tableBody">
+ 
+            <!-- Row 1 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abdul Haseeb">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abdul Haseeb</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Irfan Ullah</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Operations</td>
+              <td class="sps-td">Administration</td>
+              <td class="sps-td">PK</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 311 5674101</td>
+              <td class="sps-td sps-td--email">abdul.haseeb@gmail.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--no">No</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" checked aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abdul Haseeb">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 2 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abid Ullah">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abid Ullah</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--internship">Internship</span></td>
+              <td class="sps-td">M. Ayan Ijaz</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Operations</td>
+              <td class="sps-td">AppDev</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 311 5121187</td>
+              <td class="sps-td sps-td--email">abid.ullah@gmnil.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abid Ullah">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 3 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abdul Rehman">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abdul Rehman</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Usman Tufail</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Cloud</td>
+              <td class="sps-td">DevOps</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 307 4051222</td>
+              <td class="sps-td sps-td--email">abdul.rehman@sps.net.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--no">No</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" checked aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abdul Rehman">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 4 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abdullah Qureshi">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abdullah Qureshi</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Maryam Tasir</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Cloud</td>
+              <td class="sps-td">AppDev</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 321 8762102</td>
+              <td class="sps-td sps-td--email">abdullah.qureshi@sparnet.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" checked aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abdullah Qureshi">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 5 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abid Nasir">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abid Nasir</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Adnan Rasheed</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Cloud</td>
+              <td class="sps-td">DevOps</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 311 5674101</td>
+              <td class="sps-td sps-td--email">abid.nasir@sparnet.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" checked aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abid Nasir">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 6 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Abubakar Mughal">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Abubakar Mughal</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--contract">Contract</span></td>
+              <td class="sps-td">Nadeem Masood</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Sales</td>
+              <td class="sps-td">Public Sector</td>
+              <td class="sps-td">SLED-MD</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 306 8053199</td>
+              <td class="sps-td sps-td--email">abubakar.mughal@sparat.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Abubakar Mughal">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 7 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Ahman Rasheed">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Ahman Rasheed</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Irfan Ullah</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Cloud</td>
+              <td class="sps-td">DevOps</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 303 5191994</td>
+              <td class="sps-td sps-td--email">adnan.rasheed@sparat.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" checked aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Ahman Rasheed">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 8 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Ahmad Khan">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Ahmad Khan</a></td>
+              <td class="sps-td sps-td--type-wrap">Service<br>Provider</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--ptstaff">PT-Staff</span></td>
+              <td class="sps-td">Farrukh Shahzad</td>
+              <td class="sps-td">Evercare<br>Technology</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Security</td>
+              <td class="sps-td sps-td--wrap">Threat<br>Management</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 333 1112334</td>
+              <td class="sps-td sps-td--email">ahmad.khan@grand.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--no">No</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Ahmad Khan">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 9 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Ahmad Saad">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Ahmad Saad</a></td>
+              <td class="sps-td">Employee</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Zeeshan Zulfiqar</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Technical</td>
+              <td class="sps-td">Cloud</td>
+              <td class="sps-td">DevOps</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 332 334334</td>
+              <td class="sps-td sps-td--email">ahmad.saad@grand.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Ahmad Saad">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+            <!-- Row 10 -->
+            <tr class="sps-tr">
+              <td class="sps-td sps-td--check">
+                <input type="checkbox" class="sps-checkbox sps-row-check" aria-label="Select Ahsan Gumia">
+              </td>
+              <td class="sps-td"><a href="#" class="sps-name-link">Ahsan Gumia</a></td>
+              <td class="sps-td">Associate</td>
+              <td class="sps-td"><span class="sps-badge sps-badge--fulltime">Full time</span></td>
+              <td class="sps-td">Usman Tufail</td>
+              <td class="sps-td">SPS</td>
+              <td class="sps-td">Operations</td>
+              <td class="sps-td">Accounting</td>
+              <td class="sps-td">Corporate</td>
+              <td class="sps-td"><span class="sps-loc-badge">PK</span></td>
+              <td class="sps-td sps-td--phone">+92 311 5674101</td>
+              <td class="sps-td sps-td--email">ahsan.gumia@sparat.com</td>
+              <td class="sps-td"><span class="sps-emg sps-emg--yes">Yes</span></td>
+              <td class="sps-td"><input type="checkbox" class="sps-checkbox" aria-label="Form"></td>
+              <td class="sps-td"><span class="sps-status-badge">Active</span></td>
+              <td class="sps-td sps-td--action">
+                <button class="sps-action-btn" aria-label="More actions for Ahsan Gumia">
+                  <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+ 
+          </tbody>
+        </table>
+      </div>
+      <!-- /LAYER 2 -->
+ 
+      <!-- ══════════════════════════════════════════════════════
+           LAYER 3 — FOOTER: PAGINATION & ENTRIES
+           ══════════════════════════════════════════════════════ -->
+      <div class="sps-table-footer">
+ 
+        <!-- Left: Entry count -->
+        <div class="sps-entry-count" id="entryCount">
+          Showing <strong>1</strong> to <strong>10</strong> of <strong>125</strong> entries
+        </div>
+ 
+        <!-- Center: Pagination -->
+        <nav aria-label="Table pagination" class="sps-pagination-nav">
+          <ul class="pagination sps-pagination mb-0">
+            <li class="page-item sps-page-item" id="pageFirst" title="First page">
+              <a class="page-link sps-page-link" href="#" aria-label="First">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <li class="page-item sps-page-item" id="pagePrev" title="Previous page">
+              <a class="page-link sps-page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">‹</span>
+              </a>
+            </li>
+            <li class="page-item sps-page-item active" data-page="1">
+              <a class="page-link sps-page-link" href="#" aria-current="page">1</a>
+            </li>
+            <li class="page-item sps-page-item" data-page="2">
+              <a class="page-link sps-page-link" href="#">2</a>
+            </li>
+            <li class="page-item sps-page-item" data-page="3">
+              <a class="page-link sps-page-link" href="#">3</a>
+            </li>
+            <li class="page-item sps-page-item" data-page="4">
+              <a class="page-link sps-page-link" href="#">4</a>
+            </li>
+            <li class="page-item sps-page-item" data-page="5">
+              <a class="page-link sps-page-link" href="#">5</a>
+            </li>
+            <li class="page-item sps-page-item" id="pageNext" title="Next page">
+              <a class="page-link sps-page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">›</span>
+              </a>
+            </li>
+            <li class="page-item sps-page-item" id="pageLast" title="Last page">
+              <a class="page-link sps-page-link" href="#" aria-label="Last">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+ 
+        <!-- Right: Show entries select -->
+        <div class="sps-show-entries">
+          <label class="sps-show-label" for="showEntries">Show</label>
+          <div class="sps-show-select-wrap">
+            <select class="sps-show-select" id="showEntries" aria-label="Entries per page">
+              <option value="10" selected>10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <i class="fa-solid fa-chevron-down sps-show-arrow" aria-hidden="true"></i>
+          </div>
+          <span class="sps-show-label">entries</span>
+        </div>
+ 
+      </div>
+      <!-- /LAYER 3 -->
+ 
+    </div><!-- /.sps-table-card -->
+  </div><!-- /.container-fluid -->
+</section>
+ 
+
+
+<!-- jQuery -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom Script -->
+<script src="script.js"></script>
+<script src="table.js"></script>

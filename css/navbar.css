@@ -1,0 +1,225 @@
+/* ============================================================
+   SPS-BMS Navbar — Custom Stylesheet
+   Requires: Bootstrap 5, FontAwesome 6
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --sps-bg:            #0275A8;      /* primary navbar background   */
+  --sps-bg-hover:      #025f8a;      /* slightly darker on hover    */
+  --sps-bg-active:     #014e73;      /* active / pressed state      */
+  --sps-text:          #ffffff;      /* default link colour         */
+  --sps-text-muted:    rgba(255, 255, 255, 0.82); /* non-active links */
+  --sps-dropdown-bg:   #ffffff;
+  --sps-dropdown-text: #1a2d3d;
+  --sps-dropdown-hover-bg:   #f0f7fc;
+  --sps-dropdown-hover-text: #0275A8;
+  --sps-divider:       #d6e9f5;
+  --sps-brand-size:    1.1rem;
+  --sps-link-size:     0.8rem;
+  --sps-font:          "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --sps-radius:        6px;
+  --sps-shadow:        0 4px 18px rgba(0, 0, 0, 0.18);
+  --sps-transition:    0.18s ease;
+}
+
+/* ── Base Navbar ── */
+.sps-navbar {
+  background-color: var(--sps-bg) !important;
+  font-family: var(--sps-font);
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 46px;
+  box-shadow: var(--sps-shadow);
+}
+
+/* ── Brand / Logo ── */
+.sps-brand {
+  color: var(--sps-text) !important;
+  font-size: var(--sps-brand-size);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 0.55rem 0.5rem 0.55rem 0;
+  margin-right: 0.6rem;
+  text-decoration: none;
+  transition: opacity var(--sps-transition);
+}
+.sps-brand:hover {
+  opacity: 0.88;
+}
+
+/* ── Nav Links ── */
+.sps-nav-link {
+  color: var(--sps-text-muted) !important;
+  font-size: var(--sps-link-size);
+  font-weight: 500;
+  padding: 0.78rem 0.55rem !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: color var(--sps-transition), background-color var(--sps-transition);
+  border-radius: 0;
+  text-decoration: none;
+}
+.sps-nav-link:hover,
+.sps-nav-link:focus {
+  color: var(--sps-text) !important;
+  background-color: var(--sps-bg-hover);
+}
+.sps-nav-link.active,
+.nav-item.active > .sps-nav-link {
+  color: var(--sps-text) !important;
+  background-color: var(--sps-bg-active);
+}
+
+/* ── Icons ── */
+.sps-icon {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+/* ── Dropdown Toggle Arrow ── */
+.sps-nav-link.dropdown-toggle::after {
+  border: none;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f107";          /* fa-chevron-down */
+  font-size: 0.6rem;
+  margin-left: 3px;
+  vertical-align: middle;
+  transition: transform var(--sps-transition);
+}
+.sps-dropdown.show > .sps-nav-link.dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown Menu ── */
+.sps-dropdown-menu {
+  background-color: var(--sps-dropdown-bg);
+  border: 1px solid rgba(2, 117, 168, 0.15);
+  border-top: 3px solid var(--sps-bg);
+  border-radius: 0 0 var(--sps-radius) var(--sps-radius);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 0.35rem 0;
+  min-width: 170px;
+  margin-top: 0 !important;
+  animation: spsDropIn 0.15s ease forwards;
+}
+
+@keyframes spsDropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Dropdown Items ── */
+.sps-dropdown-item {
+  color: var(--sps-dropdown-text) !important;
+  font-size: 0.8rem;
+  font-family: var(--sps-font);
+  font-weight: 500;
+  padding: 0.45rem 1.1rem;
+  transition: background-color var(--sps-transition), color var(--sps-transition);
+}
+.sps-dropdown-item:hover,
+.sps-dropdown-item:focus {
+  background-color: var(--sps-dropdown-hover-bg) !important;
+  color: var(--sps-dropdown-hover-text) !important;
+}
+.sps-dropdown-item:active {
+  background-color: var(--sps-bg) !important;
+  color: #fff !important;
+}
+
+/* Logout item highlight */
+.sps-logout {
+  color: #c0392b !important;
+}
+.sps-logout:hover {
+  background-color: #fdf3f2 !important;
+  color: #a93226 !important;
+}
+
+/* ── Divider ── */
+.sps-divider {
+  border-color: var(--sps-divider);
+  margin: 0.3rem 0;
+}
+
+/* ── User Profile (right) ── */
+.sps-user-link {
+  padding: 0.55rem 0.6rem !important;
+}
+.sps-avatar {
+  font-size: 1.25rem;
+  color: var(--sps-text);
+  line-height: 1;
+}
+.sps-welcome-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+/* ── Toggler (mobile) ── */
+.sps-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+  padding: 0.3rem 0.55rem;
+}
+.sps-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+.sps-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ── Responsive: Collapsed (mobile ≤ xl) ── */
+@media (max-width: 1199.98px) {
+
+  .sps-navbar {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  #mainNavContent {
+    background-color: var(--sps-bg-hover);
+    padding: 0.4rem 0 0.6rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .sps-nav-link {
+    padding: 0.55rem 1rem !important;
+    border-radius: var(--sps-radius);
+    margin: 1px 6px;
+  }
+
+  .sps-dropdown-menu {
+    background-color: var(--sps-bg-active);
+    border: none;
+    border-top: none;
+    box-shadow: none;
+    padding-left: 0.8rem;
+    border-radius: var(--sps-radius);
+  }
+
+  .sps-dropdown-item {
+    color: rgba(255,255,255,0.88) !important;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.9rem;
+  }
+  .sps-dropdown-item:hover {
+    background-color: rgba(255,255,255,0.12) !important;
+    color: #fff !important;
+  }
+
+  .sps-divider {
+    border-color: rgba(255,255,255,0.15);
+  }
+}
+
+/* ── Prevent body scroll behind fixed nav if needed ── */
+/* Uncomment if you set position: fixed on the nav
+body { padding-top: 46px; }
+*/

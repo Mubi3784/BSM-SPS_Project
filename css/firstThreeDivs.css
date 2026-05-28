@@ -1,0 +1,346 @@
+/* ============================================================
+   SPS-BMS HR Dashboard — filters.css
+   ============================================================ */
+
+/* ── CSS Variables ──────────────────────────────────────────── */
+:root {
+  --f-blue:           #0076A8;
+  --f-blue-dark:      #005f87;
+  --f-blue-light:     #e6f3f8;
+  --f-bg-page:        #F8F9FA;
+  --f-bg-card:        #FFFFFF;
+  --f-border:         #E9ECEF;
+  --f-border-input:   #D8DEE4;
+  --f-border-hover:   #b0c4d0;
+  --f-text-dark:      #1a2d3d;
+  --f-text-mid:       #4a5568;
+  --f-text-muted:     #8a9ab0;
+  --f-text-placeholder: #9eaab7;
+  --f-card-radius:    10px;
+  --f-btn-radius:     20px;
+  --f-input-radius:   6px;
+  --f-shadow-card:    0 1px 4px rgba(0, 0, 0, 0.06);
+  --f-font:           "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --f-transition:     0.18s ease;
+}
+
+/* ── Page Body Background ──────────────────────────────────── */
+body,
+.sps-dashboard-body {
+  background-color: var(--f-bg-page);
+  font-family: var(--f-font);
+}
+
+/* ── Page Container ────────────────────────────────────────── */
+.sps-page-container {
+  padding: 18px 20px 24px;
+  max-width: 100%;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   BLOCK 1 — TOGGLE BUTTONS ROW
+   ════════════════════════════════════════════════════════════ */
+.sps-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+/* Base pill button */
+.sps-btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 20px;
+  border-radius: var(--f-btn-radius);
+  font-family: var(--f-font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background-color var(--f-transition),
+              color var(--f-transition),
+              border-color var(--f-transition),
+              box-shadow var(--f-transition);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Filled / Active state */
+.sps-btn-toggle--active {
+  background-color: var(--f-blue);
+  color: #ffffff;
+  border: 1px solid var(--f-blue);
+  box-shadow: 0 2px 6px rgba(0, 118, 168, 0.25);
+}
+.sps-btn-toggle--active:hover,
+.sps-btn-toggle--active:focus {
+  background-color: var(--f-blue-dark);
+  border-color: var(--f-blue-dark);
+  box-shadow: 0 3px 10px rgba(0, 118, 168, 0.32);
+  outline: none;
+}
+
+/* Outline / Inactive state */
+.sps-btn-toggle--outline {
+  background-color: #ffffff;
+  color: var(--f-text-dark);
+  border: 1px solid #E0E0E0;
+  box-shadow: none;
+}
+.sps-btn-toggle--outline:hover,
+.sps-btn-toggle--outline:focus {
+  border-color: var(--f-blue);
+  color: var(--f-blue);
+  background-color: var(--f-blue-light);
+  outline: none;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   BLOCK 2 — DASHBOARD HEADER CARD
+   ════════════════════════════════════════════════════════════ */
+.sps-header-card {
+  background-color: var(--f-bg-card);
+  border: 1px solid var(--f-border);
+  border-radius: var(--f-card-radius);
+  box-shadow: var(--f-shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Left side */
+.sps-header-card__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sps-header-card__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: var(--f-blue-light);
+  color: var(--f-blue);
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.sps-header-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--f-text-dark);
+  margin: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right side */
+.sps-header-card__right {
+  flex-shrink: 0;
+}
+
+/* + Add New button */
+.sps-btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 18px;
+  background-color: var(--f-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--f-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background-color var(--f-transition), box-shadow var(--f-transition);
+  white-space: nowrap;
+}
+.sps-btn-add:hover,
+.sps-btn-add:focus {
+  background-color: var(--f-blue-dark);
+  box-shadow: 0 3px 10px rgba(0, 118, 168, 0.3);
+  outline: none;
+}
+.sps-btn-add i {
+  font-size: 0.72rem;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   BLOCK 3 — FILTER SELECTION PANEL
+   ════════════════════════════════════════════════════════════ */
+.sps-filter-card {
+  background-color: var(--f-bg-card);
+  border: 1px solid var(--f-border);
+  border-radius: var(--f-card-radius);
+  box-shadow: var(--f-shadow-card);
+  padding: 18px 20px 16px;
+}
+
+/* Row spacing */
+.sps-filter-row {
+  /* Bootstrap g-3 handles column gaps; we only manage vertical row gap */
+}
+.sps-filter-row--second {
+  margin-top: 0; /* g-3 on the row already provides gap */
+}
+
+/* ── Individual Filter Group (label + select) ── */
+.sps-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Label */
+.sps-filter-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--f-text-mid);
+  letter-spacing: 0.15px;
+  line-height: 1;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Select Wrapper (positions custom arrow) ── */
+.sps-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom down-arrow icon */
+.sps-select-arrow {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  color: var(--f-text-muted);
+  pointer-events: none;
+  transition: color var(--f-transition), transform var(--f-transition);
+}
+
+/* Rotate arrow when select is focused */
+.sps-select-wrap:focus-within .sps-select-arrow {
+  color: var(--f-blue);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Filled state arrow color */
+.sps-select-wrap--filled .sps-select-arrow {
+  color: var(--f-blue);
+}
+
+/* ── Select Element ── */
+.sps-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 36px;
+  padding: 0 32px 0 10px;    /* right padding reserves space for arrow */
+  background-color: #ffffff;
+  border: 1px solid var(--f-border-input);
+  border-radius: var(--f-input-radius);
+  font-family: var(--f-font);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--f-text-placeholder);  /* placeholder color until value selected */
+  cursor: pointer;
+  transition: border-color var(--f-transition),
+              box-shadow var(--f-transition),
+              color var(--f-transition);
+  outline: none;
+  /* Hide native dropdown arrow in IE/Edge */
+  background-image: none;
+}
+
+/* When a real value is selected (via JS class) */
+.sps-select-wrap--filled .sps-select {
+  color: var(--f-text-dark);
+}
+
+.sps-select:hover {
+  border-color: var(--f-border-hover);
+}
+
+.sps-select:focus {
+  border-color: var(--f-blue);
+  box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.12);
+  color: var(--f-text-dark);
+}
+
+/* Style the placeholder option */
+.sps-select option[value=""][disabled] {
+  color: var(--f-text-placeholder);
+}
+
+/* Style regular options */
+.sps-select option:not([disabled]) {
+  color: var(--f-text-dark);
+  font-size: 0.8rem;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE TWEAKS
+   ════════════════════════════════════════════════════════════ */
+
+/* Tablet (sm–lg): tighten card padding */
+@media (max-width: 991.98px) {
+  .sps-page-container {
+    padding: 14px 14px 20px;
+  }
+  .sps-header-card {
+    padding: 12px 16px;
+  }
+  .sps-filter-card {
+    padding: 14px 16px 14px;
+  }
+  .sps-header-card__title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (xs–sm): allow title to wrap */
+@media (max-width: 575.98px) {
+  .sps-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sps-header-card__title {
+    white-space: normal;
+    font-size: 0.9rem;
+  }
+  .sps-header-card__right {
+    align-self: flex-start;
+  }
+  .sps-filter-label {
+    white-space: normal;
+  }
+}
