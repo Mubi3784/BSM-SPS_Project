@@ -635,6 +635,8 @@ $(function () {
  
 (function injectDynamicStyles() {
   var css = `
+  /* ... 80 lines of CSS ... */;
+  $('<style>').text(css).appendTo('head');
 /* ── Button pulse ── */
 .sps-btn--pulse { transform: scale(0.94); transition: transform 0.14s ease !important; }
 

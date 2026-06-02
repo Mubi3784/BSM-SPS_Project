@@ -25,7 +25,7 @@
 
 /* ── Base Navbar ── */
 .sps-navbar {
-  background-color: var(--sps-bg) !important;
+  background-color: var(--sps-bg)  ;
   font-family: var(--sps-font);
   padding-top: 0;
   padding-bottom: 0;

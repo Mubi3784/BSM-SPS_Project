@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — SPS-BMS</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts: DM Sans for body, DM Serif Display for headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SIMULATED NAVBAR PLACEHOLDER (removed in production)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="pf-navbar-mock d-flex align-items-center px-4">
+    <span class="pf-navbar-brand me-4">SPS-BMS</span>
+    <nav class="pf-navbar-links">
+      <a href="#">Home</a><a href="#">HR ▾</a><a href="#">Accounting ▾</a>
+      <a href="#">Legal ▾</a><a href="#">IT ▾</a><a href="#">Services ▾</a>
+      <a href="#">Education ▾</a><a href="#">Sales ▾</a><a href="#">Marketing ▾</a>
+      <a href="#">Spinntabs ▾</a><a href="#">Jobcode</a>
+    </nav>
+    <div class="pf-navbar-user ms-auto">
+      <i class="fa-solid fa-circle-user me-1"></i> Welcome Abid ▾
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN CONTENT — build everything below the navbar here
+       ═══════════════════════════════════════════════════════════ -->
+  <main class="pf-main" id="profileMain">
+    <div class="container-fluid pf-container">
+
+      <!-- ── PAGE HEADER ──────────────────────────────────────── -->
+      <header class="pf-page-header" aria-label="My Profile page header">
+        <div class="pf-page-header__inner">
+          <div class="pf-page-header__icon" aria-hidden="true">
+            <i class="fa-solid fa-id-card-clip"></i>
+          </div>
+          <div>
+            <h1 class="pf-page-header__title">My Profile</h1>
+            <p class="pf-page-header__sub">Manage your personal information and preferences</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ── TOP SECTION: EMPLOYEE OVERVIEW + PROFILE PICTURE ── -->
+      <section aria-label="Employee overview" class="mb-4">
+        <div class="row g-4 align-items-stretch">
+
+          <!-- MAIN INFO CARD (col-lg-9) -->
+          <div class="col-lg-9">
+            <div class="pf-card h-100">
+              <div class="pf-card-header">
+                <i class="fa-solid fa-user me-2" aria-hidden="true"></i>Employee Information
+              </div>
+              <div class="pf-card-body">
+                <div class="row g-3">
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empName">Name</label>
+                    <input type="text" class="pf-input pf-input--disabled" id="empName"
+                           value="Abdul Hameed" disabled aria-label="Employee name" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empGroup">Group</label>
+                    <input type="text" class="pf-input pf-input--disabled" id="empGroup"
+                           value="Administrative" disabled aria-label="Group" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empLocation">Location</label>
+                    <input type="text" class="pf-input pf-input--disabled" id="empLocation"
+                           value="PK" disabled aria-label="Location" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empDateOfHire">Date of Hire</label>
+                    <div class="pf-input-icon-wrap">
+                      <i class="fa-regular fa-calendar pf-input-icon" aria-hidden="true"></i>
+                      <input type="text" class="pf-input pf-input--disabled pf-input--icon"
+                             id="empDateOfHire" value="02/01/2010" disabled aria-label="Date of hire" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empLevel">Level</label>
+                    <input type="text" class="pf-input pf-input--disabled" id="empLevel"
+                           value="" disabled placeholder="—" aria-label="Level" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="pf-label" for="empStatus">Status</label>
+                    <div class="d-flex align-items-center gap-2">
+                      <input type="text" class="pf-input pf-input--disabled" id="empStatus"
+                             value="full-time" disabled aria-label="Employment status" />
+                      <span class="pf-status-pill pf-status-pill--active" aria-label="Active status">Active</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /MAIN INFO CARD -->
+
+          <!-- PROFILE PICTURE CARD (col-lg-3) -->
+          <div class="col-lg-3">
+            <div class="pf-card h-100">
+              <div class="pf-card-header">
+                <i class="fa-solid fa-camera me-2" aria-hidden="true"></i>Profile Picture
+              </div>
+              <div class="pf-card-body pf-card-body--center">
+                <div class="pf-avatar-wrap" aria-label="Profile photo area">
+                  <div class="pf-avatar">
+                    <!-- Default avatar SVG placeholder -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"
+                         class="pf-avatar__img" aria-label="Default profile avatar" role="img">
+                      <circle cx="60" cy="60" r="60" fill="#E8F4FA"/>
+                      <circle cx="60" cy="44" r="20" fill="#0076A8" opacity="0.7"/>
+                      <ellipse cx="60" cy="95" rx="30" ry="22" fill="#0076A8" opacity="0.5"/>
+                      <circle cx="60" cy="60" r="59" fill="none" stroke="#0076A8" stroke-width="1.5" opacity="0.2"/>
+                    </svg>
+                    <div class="pf-avatar__overlay" aria-hidden="true">
+                      <i class="fa-solid fa-camera"></i>
+                    </div>
+                  </div>
+                  <p class="pf-avatar__name">Abdul Hameed</p>
+                  <p class="pf-avatar__role">Administrative Group</p>
+                </div>
+                <!-- Hidden file input triggered by the link below -->
+                <input type="file" id="avatarFileInput" class="d-none"
+                       accept="image/png, image/jpeg, image/gif"
+                       aria-label="Upload profile picture" />
+                <label for="avatarFileInput" class="pf-avatar-upload-link" role="button" tabindex="0">
+                  <i class="fa-solid fa-arrow-up-from-bracket me-1" aria-hidden="true"></i>
+                  Add Profile Picture
+                </label>
+                <p class="pf-avatar__hint">JPG, PNG or GIF · Max 2 MB</p>
+              </div>
+            </div>
+          </div>
+          <!-- /PROFILE PICTURE CARD -->
+
+        </div>
+      </section>
+      <!-- /TOP SECTION -->
+
+      <!-- ── STACKING FORM CARDS ─────────────────────────────── -->
+      <div class="row g-4">
+        <div class="col-12">
+
+          <!-- CONTACT INFORMATION CARD -->
+          <section class="pf-card mb-4" aria-label="Contact information">
+            <div class="pf-card-header">
+              <i class="fa-solid fa-address-book me-2" aria-hidden="true"></i>Contact Information
+            </div>
+            <div class="pf-card-body">
+              <div class="row g-3">
+
+                <div class="col-md-6 col-lg-3">
+                  <label class="pf-label" for="mobileNo">Mobile No</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-mobile-screen pf-input-icon" aria-hidden="true"></i>
+                    <input type="tel" class="pf-input pf-input--icon" id="mobileNo"
+                           value="+92 311 8811906" aria-label="Mobile number" />
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                  <label class="pf-label" for="homeNo">Home No</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-phone pf-input-icon" aria-hidden="true"></i>
+                    <input type="tel" class="pf-input pf-input--icon" id="homeNo"
+                           value="" placeholder="Not provided" aria-label="Home number" />
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                  <label class="pf-label" for="emergencyNo">Emergency No</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-phone-volume pf-input-icon" aria-hidden="true"></i>
+                    <input type="tel" class="pf-input pf-input--icon" id="emergencyNo"
+                           value="" placeholder="Not provided" aria-label="Emergency contact number" />
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                  <label class="pf-label" for="emailAddr">Email</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-envelope pf-input-icon" aria-hidden="true"></i>
+                    <input type="email" class="pf-input pf-input--icon pf-input--disabled"
+                           id="emailAddr" value="abdul.hameed@spsnet.com"
+                           disabled aria-label="Email address" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <!-- /CONTACT INFORMATION CARD -->
+
+          <!-- SUPERVISOR CARD -->
+          <section class="pf-card mb-4" aria-label="Supervisor details">
+            <div class="pf-card-header">
+              <i class="fa-solid fa-user-tie me-2" aria-hidden="true"></i>Supervisor
+            </div>
+            <div class="pf-card-body">
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="pf-label" for="supervisorName">Name</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-user pf-input-icon" aria-hidden="true"></i>
+                    <input type="text" class="pf-input pf-input--disabled pf-input--icon"
+                           id="supervisorName" value="Hash Malik"
+                           disabled aria-label="Supervisor name" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="pf-label" for="supervisorEmail">Email</label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-envelope pf-input-icon" aria-hidden="true"></i>
+                    <input type="email" class="pf-input pf-input--disabled pf-input--icon"
+                           id="supervisorEmail" value="Hash.Malik@spsnet.com"
+                           disabled aria-label="Supervisor email" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <!-- /SUPERVISOR CARD -->
+
+          <!-- RESUME CARD -->
+          <section class="pf-card mb-4" aria-label="Resume and LinkedIn">
+            <div class="pf-card-header">
+              <i class="fa-solid fa-file-lines me-2" aria-hidden="true"></i>Resume &amp; Professional Links
+            </div>
+            <div class="pf-card-body">
+              <div class="row g-3 align-items-end">
+
+                <div class="col-md-6">
+                  <label class="pf-label" for="resumeUpload">
+                    Upload Resume
+                    <span class="pf-label__note">(Format: .doc, .docx, .pdf)</span>
+                  </label>
+                  <!-- Custom file input -->
+                  <div class="pf-file-wrap" role="group" aria-label="Resume file upload">
+                    <span class="pf-file-name" id="resumeFileName" aria-live="polite">No file chosen</span>
+                    <label for="resumeUpload" class="pf-btn pf-btn--file" tabindex="0">
+                      <i class="fa-solid fa-folder-open me-1" aria-hidden="true"></i>Select File
+                    </label>
+                    <input type="file" class="d-none" id="resumeUpload"
+                           accept=".doc,.docx,.pdf"
+                           aria-label="Choose resume file" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="pf-label" for="linkedinUrl">
+                    <i class="fa-brands fa-linkedin me-1 pf-label__icon" aria-hidden="true"></i>
+                    LinkedIn URL
+                  </label>
+                  <div class="pf-input-icon-wrap">
+                    <i class="fa-solid fa-link pf-input-icon" aria-hidden="true"></i>
+                    <input type="url" class="pf-input pf-input--icon" id="linkedinUrl"
+                           placeholder="https://linkedin.com/in/your-profile"
+                           aria-label="LinkedIn profile URL" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <!-- /RESUME CARD -->
+
+          <!-- BIO CARD -->
+          <section class="pf-card mb-4" aria-label="Bio">
+            <div class="pf-card-header">
+              <i class="fa-solid fa-pen-nib me-2" aria-hidden="true"></i>Bio
+            </div>
+            <div class="pf-card-body">
+              <label class="pf-label" for="bioTextarea">About yourself</label>
+              <textarea class="pf-textarea" id="bioTextarea" rows="5"
+                        placeholder="Tell your colleagues a little about yourself — your expertise, interests, and what you bring to the team…"
+                        aria-label="Personal bio"></textarea>
+            </div>
+          </section>
+          <!-- /BIO CARD -->
+
+          <!-- UPDATE BUTTON -->
+          <div class="pf-action-row mb-5">
+            <button type="button" class="pf-btn pf-btn--primary" id="btnUpdateProfile"
+                    aria-label="Save and update profile changes">
+              <i class="fa-solid fa-floppy-disk me-2" aria-hidden="true"></i>Update Profile
+            </button>
+            <button type="button" class="pf-btn pf-btn--ghost" aria-label="Cancel changes">
+              Cancel
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <!-- /STACKING FORM CARDS -->
+
+      <!-- ── BOTTOM DATA TABLES ──────────────────────────────── -->
+      <div class="row g-4">
+
+        <!-- ATTACHMENTS TABLE -->
+        <div class="col-md-6">
+          <section class="pf-card h-100" aria-label="Attachments">
+            <div class="pf-card-header pf-card-header--flex">
+              <span><i class="fa-solid fa-paperclip me-2" aria-hidden="true"></i>Attachments</span>
+              <button class="pf-table-action-btn" type="button" aria-label="Add new attachment">
+                <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>Add New
+              </button>
+            </div>
+            <div class="pf-table-wrap">
+              <table class="pf-table" aria-label="Attachments table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr</th>
+                    <th scope="col">Title</th>
+                    <th scope="col" class="pf-th--action">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pf-empty-row">
+                    <td colspan="3">
+                      <div class="pf-empty-state" aria-label="No attachments found">
+                        <i class="fa-solid fa-paperclip pf-empty-state__icon" aria-hidden="true"></i>
+                        <span>No attachments found</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <!-- /ATTACHMENTS TABLE -->
+
+        <!-- COMMUNICATION SKILLS TABLE -->
+        <div class="col-md-6">
+          <section class="pf-card h-100" aria-label="Communication skills">
+            <div class="pf-card-header pf-card-header--flex">
+              <span><i class="fa-solid fa-comments me-2" aria-hidden="true"></i>Communication Skills</span>
+              <button class="pf-table-action-btn" type="button" aria-label="Add new communication skill">
+                <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>Add New
+              </button>
+            </div>
+            <div class="pf-table-wrap">
+              <table class="pf-table" aria-label="Communication skills table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr</th>
+                    <th scope="col">Added By</th>
+                    <th scope="col">Speaking</th>
+                    <th scope="col">Writing</th>
+                    <th scope="col">Listening</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" class="pf-th--action">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pf-empty-row">
+                    <td colspan="7">
+                      <div class="pf-empty-state" aria-label="No communication skills recorded">
+                        <i class="fa-solid fa-comments pf-empty-state__icon" aria-hidden="true"></i>
+                        <span>No records found</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <!-- /COMMUNICATION SKILLS TABLE -->
+
+        <!-- EMPLOYEE ROLES TABLE (full width) -->
+        <div class="col-12">
+          <section class="pf-card" aria-label="Employee roles">
+            <div class="pf-card-header">
+              <i class="fa-solid fa-briefcase me-2" aria-hidden="true"></i>Employee Roles
+            </div>
+            <div class="pf-table-wrap">
+              <table class="pf-table" aria-label="Employee roles table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Practice</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Rank</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pf-empty-row">
+                    <td colspan="6">
+                      <div class="pf-empty-state" aria-label="No employee roles assigned">
+                        <i class="fa-solid fa-briefcase pf-empty-state__icon" aria-hidden="true"></i>
+                        <span>No roles assigned</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <!-- /EMPLOYEE ROLES TABLE -->
+
+        <!-- CERTIFICATIONS TABLE (full width) -->
+        <div class="col-12">
+          <section class="pf-card" aria-label="Certifications">
+            <div class="pf-card-header pf-card-header--flex">
+              <span><i class="fa-solid fa-certificate me-2" aria-hidden="true"></i>Certifications</span>
+              <button class="pf-table-action-btn" type="button" aria-label="Add new certification">
+                <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>Add Certification
+              </button>
+            </div>
+            <div class="pf-table-wrap">
+              <table class="pf-table" aria-label="Certifications table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Practice</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Completed On</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pf-empty-row">
+                    <td colspan="10">
+                      <div class="pf-empty-state" aria-label="No certifications found">
+                        <i class="fa-solid fa-certificate pf-empty-state__icon" aria-hidden="true"></i>
+                        <span>No certifications found</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <!-- /CERTIFICATIONS TABLE -->
+
+        <!-- BADGES & ACCREDITATION TABLE (full width) -->
+        <div class="col-12 mb-5">
+          <section class="pf-card" aria-label="Badges and accreditation">
+            <div class="pf-card-header pf-card-header--flex">
+              <span><i class="fa-solid fa-award me-2" aria-hidden="true"></i>Badges &amp; Accreditation</span>
+              <button class="pf-table-action-btn" type="button" aria-label="Add new badge">
+                <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>Add Badge
+              </button>
+            </div>
+            <div class="pf-table-wrap">
+              <table class="pf-table" aria-label="Badges and accreditation table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Practice</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Completed On</th>
+                    <th scope="col" class="pf-th--action">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pf-empty-row">
+                    <td colspan="9">
+                      <div class="pf-empty-state" aria-label="No badges found">
+                        <i class="fa-solid fa-award pf-empty-state__icon" aria-hidden="true"></i>
+                        <span>No badges found</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <!-- /BADGES & ACCREDITATION TABLE -->
+
+      </div>
+      <!-- /BOTTOM DATA TABLES -->
+
+    </div><!-- /.pf-container -->
+  </main>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ── File input: resume filename display ── */
+    document.getElementById('resumeUpload').addEventListener('change', function () {
+      const nameEl = document.getElementById('resumeFileName');
+      if (this.files && this.files[0]) {
+        const name = this.files[0].name;
+        nameEl.textContent = name.length > 28 ? name.slice(0, 25) + '…' : name;
+        nameEl.classList.add('pf-file-name--has-file');
+      } else {
+        nameEl.textContent = 'No file chosen';
+        nameEl.classList.remove('pf-file-name--has-file');
+      }
+    });
+
+    /* ── Avatar upload preview ── */
+    document.getElementById('avatarFileInput').addEventListener('change', function () {
+      if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const avatarWrap = document.querySelector('.pf-avatar');
+          const svg = avatarWrap.querySelector('svg');
+          // Replace SVG with an actual image
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.className = 'pf-avatar__img pf-avatar__img--photo';
+          img.alt = 'Profile photo';
+          svg.replaceWith(img);
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    });
+
+    /* ── Update button feedback ── */
+    document.getElementById('btnUpdateProfile').addEventListener('click', function () {
+      const btn = this;
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Profile Updated!';
+      btn.classList.add('pf-btn--success');
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove('pf-btn--success');
+        btn.disabled = false;
+      }, 2500);
+    });
+  </script>
+
+</body>
+</html>

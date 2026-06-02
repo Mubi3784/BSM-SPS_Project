@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Existing Dashboard Stylesheets -->
   <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/firstThreeDivs.css">
+  
   <!-- Employee Detail Stylesheet -->
   <link rel="stylesheet" href="/css/employeeDetail.css">
 </head>
@@ -23,6 +23,218 @@
 
   <!-- ── Top Navbar (your existing navbar goes here) ── -->
   <!-- Paste your <nav class="sps-navbar"> block here -->
+<nav class="navbar navbar-expand-xl sps-navbar" id="spsNavbar">
+  <div class="container-fluid px-3">
+
+    <!-- ── Brand Logo ── -->
+    <a class="navbar-brand sps-brand" href="#">SPS-BMS</a>
+
+    <!-- ── Mobile Toggler ── -->
+    <button class="navbar-toggler sps-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavContent"
+            aria-controls="mainNavContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ── Collapsible Content ── -->
+    <div class="collapse navbar-collapse" id="mainNavContent">
+
+      <!-- ── Left Nav Links ── -->
+      <ul class="navbar-nav me-auto align-items-xl-center">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link sps-nav-link" href="#">
+            <i class="fa-solid fa-house sps-icon"></i>
+            <span>Home</span>
+          </a>
+        </li>
+
+        <!-- HR (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropHR" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-users sps-icon"></i>
+            <span>HR</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropHR">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Employees</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Payroll</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Attendance</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Recruitment</a></li>
+            <li><hr class="dropdown-divider sps-divider"></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Reports</a></li>
+          </ul>
+        </li>
+
+        <!-- Accounting (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropAccounting" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-calculator sps-icon"></i>
+            <span>Accounting</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropAccounting">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Invoices</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Expenses</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Ledger</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Tax</a></li>
+          </ul>
+        </li>
+
+        <!-- Legal (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropLegal" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-scale-balanced sps-icon"></i>
+            <span>Legal</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropLegal">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Contracts</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Compliance</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Disputes</a></li>
+          </ul>
+        </li>
+
+        <!-- IT (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropIT" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-desktop sps-icon"></i>
+            <span>IT</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropIT">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Assets</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Help Desk</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Network</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Security</a></li>
+          </ul>
+        </li>
+
+        <!-- Services (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropServices" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-briefcase sps-icon"></i>
+            <span>Services</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropServices">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Managed Services</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Consulting</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Support</a></li>
+          </ul>
+        </li>
+
+        <!-- Extension (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropExtension" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-puzzle-piece sps-icon"></i>
+            <span>Extension</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropExtension">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Add-ons</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Integrations</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Plugins</a></li>
+          </ul>
+        </li>
+
+        <!-- Sales (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropSales" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-chart-line sps-icon"></i>
+            <span>Sales</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropSales">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Leads</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Opportunities</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Quotations</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Orders</a></li>
+          </ul>
+        </li>
+
+        <!-- Marketing (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropMarketing" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-bullhorn sps-icon"></i>
+            <span>Marketing</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropMarketing">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Campaigns</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Analytics</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Content</a></li>
+          </ul>
+        </li>
+
+        <!-- Sterilex (dropdown) -->
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link dropdown-toggle" href="#"
+             id="dropSterilex" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fa-solid fa-file-lines sps-icon"></i>
+            <span>Sterilex</span>
+          </a>
+          <ul class="dropdown-menu sps-dropdown-menu" aria-labelledby="dropSterilex">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Products</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Orders</a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">Reports</a></li>
+          </ul>
+        </li>
+
+        <!-- Jaksonde (no dropdown) -->
+        <li class="nav-item">
+          <a class="nav-link sps-nav-link" href="#">
+            <i class="fa-solid fa-file-lines sps-icon"></i>
+            <span>Jaksonde</span>
+          </a>
+        </li>
+
+      </ul>
+      <!-- ── End Left Nav ── -->
+
+      <!-- ── Right: User Profile ── -->
+      <ul class="navbar-nav ms-auto align-items-xl-center">
+        <li class="nav-item dropdown sps-dropdown">
+          <a class="nav-link sps-nav-link sps-user-link dropdown-toggle d-flex align-items-center gap-2"
+             href="#" id="dropUser" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="sps-avatar">
+              <i class="fa-solid fa-circle-user"></i>
+            </span>
+            <span class="sps-welcome-text">Welcome Abid</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end sps-dropdown-menu" aria-labelledby="dropUser">
+            <li><a class="dropdown-item sps-dropdown-item" href="#">
+              <i class="fa-solid fa-user me-2"></i>My Profile
+            </a></li>
+            <li><a class="dropdown-item sps-dropdown-item" href="#">
+              <i class="fa-solid fa-gear me-2"></i>Settings
+            </a></li>
+            <li><hr class="dropdown-divider sps-divider"></li>
+            <li><a class="dropdown-item sps-dropdown-item sps-logout" href="#">
+              <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+            </a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- ── End Right ── -->
+
+    </div><!-- /#mainNavContent -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 
   <!-- ══════════════════════════════════════════════════════
        PAGE HEADER
@@ -32,7 +244,7 @@
       <span class="ed-page-header__icon"><i class="fa-solid fa-id-card-clip"></i></span>
       <h1 class="ed-page-header__title">Employee Detail</h1>
     </div>
-    <a href="/pages/index.html" class="ed-btn-back">
+    <a href="index.html" class="ed-btn-back">
       <i class="fa-solid fa-arrow-left"></i> Back
     </a>
   </div>
@@ -1168,5 +1380,6 @@
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Employee Detail JS -->
   <script src="/JavaScript/employeeDetail.js"></script>
+  <script src="/JavaScript/script.js"></script>
 </body>
 </html>

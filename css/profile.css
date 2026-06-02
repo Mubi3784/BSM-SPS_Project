@@ -1,0 +1,747 @@
+/* ============================================================
+   SPS-BMS — profile.css
+   Modern Enterprise Profile Dashboard
+   Brand: #0076A8 (primary) | #F8F9FA (canvas) | #FFFFFF (card)
+   Font: DM Sans (body) · DM Serif Display (heading accents)
+   ============================================================ */
+
+/* ── Design Tokens ──────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --pf-blue:           #0076A8;
+  --pf-blue-dark:      #005f87;
+  --pf-blue-deeper:    #004e73;
+  --pf-blue-light:     #e6f3f8;
+  --pf-blue-xlight:    #f0f8fc;
+  --pf-blue-mid:       #cce6f3;
+
+  /* Surfaces */
+  --pf-bg:             #F8F9FA;
+  --pf-card-bg:        #FFFFFF;
+  --pf-border:         #E9ECEF;
+  --pf-border-input:   #D8DEE4;
+  --pf-border-hover:   #a8c8dc;
+
+  /* Text */
+  --pf-text-dark:      #1a2d3d;
+  --pf-text-mid:       #4a5568;
+  --pf-text-muted:     #8a9ab0;
+  --pf-text-placeholder:#9eaab7;
+
+  /* Status */
+  --pf-success:        #1aaa55;
+  --pf-danger:         #e04848;
+  --pf-warning:        #e08000;
+
+  /* Layout */
+  --pf-radius-card:    12px;
+  --pf-radius-input:   8px;
+  --pf-radius-btn:     8px;
+  --pf-shadow-card:    0 2px 12px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--pf-border);
+  --pf-shadow-hover:   0 6px 24px rgba(0, 118, 168, 0.12), 0 0 0 1px var(--pf-blue-mid);
+  --pf-transition:     0.18s ease;
+
+  /* Typography */
+  --pf-font:           'DM Sans', system-ui, -apple-system, sans-serif;
+  --pf-font-display:   'DM Serif Display', Georgia, serif;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--pf-font);
+  background-color: var(--pf-bg);
+  color: var(--pf-text-dark);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Simulated Navbar ───────────────────────────────────────── */
+.pf-navbar-mock {
+  background-color: var(--pf-blue);
+  color: #fff;
+  height: 44px;
+  font-size: 0.75rem;
+  font-family: var(--pf-font);
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.pf-navbar-brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pf-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+
+.pf-navbar-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 0 10px;
+  line-height: 44px;
+  white-space: nowrap;
+  font-size: 0.73rem;
+  transition: color var(--pf-transition), background-color var(--pf-transition);
+}
+
+.pf-navbar-links a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pf-navbar-user {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* ── Main Layout ────────────────────────────────────────────── */
+.pf-main {
+  min-height: calc(100vh - 44px);
+  background-color: var(--pf-bg);
+}
+
+.pf-container {
+  max-width: 1400px;
+  padding: 0 28px 48px;
+  margin: 0 auto;
+}
+
+/* ── Page Header ────────────────────────────────────────────── */
+.pf-page-header {
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--pf-border);
+  margin-bottom: 28px;
+}
+
+.pf-page-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pf-page-header__icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--pf-blue), var(--pf-blue-dark));
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 118, 168, 0.3);
+}
+
+.pf-page-header__title {
+  font-family: var(--pf-font);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--pf-text-dark);
+  margin: 0 0 2px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+.pf-page-header__sub {
+  font-size: 0.8rem;
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* ── Card Base ──────────────────────────────────────────────── */
+.pf-card {
+  background-color: var(--pf-card-bg);
+  border-radius: var(--pf-radius-card);
+  box-shadow: var(--pf-shadow-card);
+  overflow: hidden;
+  transition: box-shadow var(--pf-transition);
+}
+
+.pf-card:hover {
+  box-shadow: var(--pf-shadow-hover);
+}
+
+/* Card Header */
+.pf-card-header {
+  background-color: var(--pf-blue);
+  color: #ffffff;
+  padding: 12px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  /* left accent stripe */
+  border-left: 4px solid var(--pf-blue-deeper);
+}
+
+.pf-card-header--flex {
+  justify-content: space-between;
+}
+
+/* Card Body */
+.pf-card-body {
+  padding: 22px 20px;
+}
+
+.pf-card-body--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 20px;
+}
+
+/* ── Form Labels ────────────────────────────────────────────── */
+.pf-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--pf-text-mid);
+  letter-spacing: 0.15px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.pf-label__note {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--pf-text-muted);
+  margin-left: 4px;
+}
+
+.pf-label__icon {
+  color: #0077B5; /* LinkedIn brand blue */
+  font-size: 0.75rem;
+}
+
+/* ── Inputs ─────────────────────────────────────────────────── */
+.pf-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--pf-border-input);
+  border-radius: var(--pf-radius-input);
+  font-family: var(--pf-font);
+  font-size: 0.8rem;
+  color: var(--pf-text-dark);
+  background-color: #fff;
+  outline: none;
+  transition: border-color var(--pf-transition), box-shadow var(--pf-transition);
+  appearance: none;
+}
+
+.pf-input::placeholder {
+  color: var(--pf-text-placeholder);
+}
+
+.pf-input:hover:not(:disabled) {
+  border-color: var(--pf-border-hover);
+}
+
+.pf-input:focus:not(:disabled) {
+  border-color: var(--pf-blue);
+  box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.12);
+}
+
+/* Disabled / read-only input */
+.pf-input--disabled,
+.pf-input:disabled {
+  background-color: #f5f7f9;
+  color: var(--pf-text-mid);
+  cursor: not-allowed;
+  border-color: var(--pf-border);
+  opacity: 1; /* override Bootstrap opacity */
+}
+
+/* Input with left icon */
+.pf-input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pf-input-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--pf-text-muted);
+  font-size: 0.72rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pf-input--icon {
+  padding-left: 30px;
+}
+
+/* ── Textarea ────────────────────────────────────────────────── */
+.pf-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--pf-border-input);
+  border-radius: var(--pf-radius-input);
+  font-family: var(--pf-font);
+  font-size: 0.8rem;
+  color: var(--pf-text-dark);
+  background-color: #fff;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+  transition: border-color var(--pf-transition), box-shadow var(--pf-transition);
+}
+
+.pf-textarea::placeholder {
+  color: var(--pf-text-placeholder);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.pf-textarea:hover { border-color: var(--pf-border-hover); }
+.pf-textarea:focus {
+  border-color: var(--pf-blue);
+  box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.12);
+}
+
+/* ── Profile Avatar ─────────────────────────────────────────── */
+.pf-avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pf-avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--pf-blue-light);
+  box-shadow: 0 4px 16px rgba(0, 118, 168, 0.2);
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: box-shadow var(--pf-transition), border-color var(--pf-transition);
+}
+
+.pf-avatar:hover {
+  border-color: var(--pf-blue);
+  box-shadow: 0 6px 24px rgba(0, 118, 168, 0.28);
+}
+
+.pf-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pf-avatar__img--photo {
+  border-radius: 50%;
+}
+
+/* Camera icon overlay on hover */
+.pf-avatar__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 118, 168, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity var(--pf-transition);
+  border-radius: 50%;
+}
+
+.pf-avatar:hover .pf-avatar__overlay {
+  opacity: 1;
+}
+
+.pf-avatar__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--pf-text-dark);
+  margin: 0 0 2px;
+}
+
+.pf-avatar__role {
+  font-size: 0.72rem;
+  color: var(--pf-text-muted);
+  margin: 0 0 16px;
+}
+
+.pf-avatar-upload-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--pf-blue);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--pf-blue);
+  border-radius: 6px;
+  padding: 6px 14px;
+  transition: background-color var(--pf-transition), color var(--pf-transition);
+}
+
+.pf-avatar-upload-link:hover,
+.pf-avatar-upload-link:focus {
+  background-color: var(--pf-blue);
+  color: #fff;
+  outline: none;
+  text-decoration: none;
+}
+
+.pf-avatar__hint {
+  font-size: 0.68rem;
+  color: var(--pf-text-muted);
+  margin: 8px 0 0;
+}
+
+/* ── Status Pill ────────────────────────────────────────────── */
+.pf-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.pf-status-pill--active {
+  background-color: #e6f8ee;
+  color: #1a7a40;
+  border: 1px solid #a8dfbe;
+}
+
+.pf-status-pill--inactive {
+  background-color: #fdf0f0;
+  color: #b52a2a;
+  border: 1px solid #f0b0b0;
+}
+
+/* ── File Input ─────────────────────────────────────────────── */
+.pf-file-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--pf-border-input);
+  border-radius: var(--pf-radius-input);
+  overflow: hidden;
+  height: 38px;
+  background: #fff;
+  transition: border-color var(--pf-transition), box-shadow var(--pf-transition);
+}
+
+.pf-file-wrap:focus-within {
+  border-color: var(--pf-blue);
+  box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.12);
+}
+
+.pf-file-name {
+  flex: 1;
+  padding: 0 12px;
+  font-size: 0.76rem;
+  color: var(--pf-text-placeholder);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 36px;
+  font-family: var(--pf-font);
+}
+
+.pf-file-name--has-file {
+  color: var(--pf-text-dark);
+}
+
+.pf-btn--file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 16px;
+  background-color: var(--pf-blue);
+  color: #fff;
+  border: none;
+  border-left: none;
+  font-family: var(--pf-font);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color var(--pf-transition);
+  border-radius: 0 var(--pf-radius-input) var(--pf-radius-input) 0;
+}
+
+.pf-btn--file:hover {
+  background-color: var(--pf-blue-dark);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--pf-radius-btn);
+  font-family: var(--pf-font);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--pf-transition),
+              color var(--pf-transition),
+              box-shadow var(--pf-transition),
+              transform 0.1s ease;
+  outline: none;
+  letter-spacing: 0.1px;
+  line-height: 1;
+}
+
+.pf-btn:active { transform: scale(0.97); }
+
+/* Primary solid */
+.pf-btn--primary {
+  background-color: var(--pf-blue);
+  color: #fff;
+  height: 42px;
+  padding: 0 26px;
+  font-size: 0.84rem;
+  box-shadow: 0 2px 8px rgba(0, 118, 168, 0.28);
+}
+
+.pf-btn--primary:hover,
+.pf-btn--primary:focus {
+  background-color: var(--pf-blue-dark);
+  box-shadow: 0 4px 16px rgba(0, 118, 168, 0.38);
+}
+
+/* Success state */
+.pf-btn--success {
+  background-color: var(--pf-success) !important;
+  box-shadow: 0 2px 8px rgba(26, 170, 85, 0.28) !important;
+}
+
+/* Ghost / outline */
+.pf-btn--ghost {
+  background-color: transparent;
+  color: var(--pf-text-mid);
+  height: 42px;
+  padding: 0 20px;
+  font-size: 0.84rem;
+  border: 1px solid var(--pf-border-input);
+}
+
+.pf-btn--ghost:hover {
+  border-color: var(--pf-blue);
+  color: var(--pf-blue);
+  background-color: var(--pf-blue-xlight);
+}
+
+/* Action row (below forms) */
+.pf-action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Table Action Header Button ─────────────────────────────── */
+.pf-table-action-btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  color: #fff;
+  font-family: var(--pf-font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: background-color var(--pf-transition), border-color var(--pf-transition);
+  white-space: nowrap;
+  letter-spacing: 0.1px;
+}
+
+.pf-table-action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.pf-table-action-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* ── Data Tables ────────────────────────────────────────────── */
+.pf-table-wrap {
+  overflow-x: auto;
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--pf-border-input) transparent;
+}
+
+.pf-table-wrap::-webkit-scrollbar { height: 5px; }
+.pf-table-wrap::-webkit-scrollbar-track { background: transparent; }
+.pf-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--pf-border-input);
+  border-radius: 10px;
+}
+
+.pf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--pf-font);
+  font-size: 0.78rem;
+  color: var(--pf-text-dark);
+}
+
+/* Table head */
+.pf-table thead th {
+  padding: 10px 14px;
+  background-color: #f0f6fa;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--pf-text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--pf-blue-mid);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.pf-table thead th:first-child { padding-left: 18px; }
+.pf-table thead th:last-child  { padding-right: 18px; }
+
+/* Action column — right-aligned */
+.pf-th--action { text-align: center; }
+
+/* Table body */
+.pf-table tbody tr {
+  border-bottom: 1px solid var(--pf-border);
+  transition: background-color var(--pf-transition);
+}
+
+.pf-table tbody tr:last-child { border-bottom: none; }
+.pf-table tbody tr:hover:not(.pf-empty-row) {
+  background-color: var(--pf-blue-xlight);
+}
+
+.pf-table tbody td {
+  padding: 10px 14px;
+  vertical-align: middle;
+  color: var(--pf-text-dark);
+  white-space: nowrap;
+}
+
+.pf-table tbody td:first-child { padding-left: 18px; }
+.pf-table tbody td:last-child  { padding-right: 18px; }
+
+/* Empty state row */
+.pf-empty-row td {
+  padding: 36px 18px !important;
+}
+
+.pf-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--pf-text-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.pf-empty-state__icon {
+  font-size: 1.4rem;
+  opacity: 0.35;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes pfFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pf-card {
+  animation: pfFadeUp 0.28s ease forwards;
+}
+
+/* Stagger cards with delay */
+.row > *:nth-child(1) .pf-card { animation-delay: 0.00s; }
+.row > *:nth-child(2) .pf-card { animation-delay: 0.05s; }
+.row > *:nth-child(3) .pf-card { animation-delay: 0.10s; }
+.row > *:nth-child(4) .pf-card { animation-delay: 0.15s; }
+.row > *:nth-child(5) .pf-card { animation-delay: 0.20s; }
+
+/* ── Responsive Adjustments ─────────────────────────────────── */
+@media (max-width: 991.98px) {
+  .pf-container      { padding: 0 16px 40px; }
+  .pf-page-header    { padding: 22px 0 18px; }
+  .pf-card-body      { padding: 18px 16px; }
+}
+
+@media (max-width: 767.98px) {
+  .pf-page-header__title  { font-size: 1.2rem; }
+  .pf-action-row           { flex-wrap: wrap; }
+  .pf-navbar-links a:nth-child(n+6) { display: none; }
+}
+
+@media (max-width: 575.98px) {
+  .pf-page-header__inner  { gap: 12px; }
+  .pf-page-header__icon   { width: 40px; height: 40px; font-size: 1rem; border-radius: 10px; }
+  .pf-container            { padding: 0 12px 32px; }
+}
+
+/* ── Utility ────────────────────────────────────────────────── */
+/* Visually hidden but screen-reader accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus ring for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--pf-blue);
+  outline-offset: 2px;
+}
+
+/* Override Bootstrap's form-control specificity where needed */
+.pf-input.form-control,
+.pf-textarea.form-control {
+  font-family: var(--pf-font);
+  font-size: 0.8rem;
+}

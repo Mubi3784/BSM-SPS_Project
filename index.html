@@ -1,27 +1,24 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<!-- ============================================================
+     SPS-BMS Top Navigation Bar
+     Dependencies: Bootstrap 5, FontAwesome 6, jQuery
+     ============================================================ -->
+
+<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <!-- FontAwesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- Custom Navbar CSS -->
-<link rel="stylesheet" href="/css/navbar.css">
-<link rel="stylesheet" href="/css/firstThreeDivs.css">
-<link rel="stylesheet" href="/css/table.css">
-</head>
+<link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="./css/firstThreeDivs.css">
+<link rel="stylesheet" href="./css/table.css">
 
-
- <body> 
 <nav class="navbar navbar-expand-xl sps-navbar" id="spsNavbar">
   <div class="container-fluid px-3">
 
-    
+    <!-- ── Brand Logo ── -->
     <a class="navbar-brand sps-brand" href="#">SPS-BMS</a>
 
- 
+    <!-- ── Mobile Toggler ── -->
     <button class="navbar-toggler sps-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#mainNavContent"
             aria-controls="mainNavContent" aria-expanded="false"
@@ -43,7 +40,7 @@
           </a>
         </li>
 
-       
+        <!-- HR (dropdown) -->
         <li class="nav-item dropdown sps-dropdown">
           <a class="nav-link sps-nav-link dropdown-toggle" href="#"
              id="dropHR" role="button" data-bs-toggle="dropdown"
@@ -184,7 +181,7 @@
           </ul>
         </li>
 
-        
+        <!-- Jaksonde (no dropdown) -->
         <li class="nav-item">
           <a class="nav-link sps-nav-link" href="#">
             <i class="fa-solid fa-file-lines sps-icon"></i>
@@ -204,7 +201,7 @@
             <span class="sps-avatar">
               <i class="fa-solid fa-circle-user"></i>
             </span>
-            <span class="sps-welcome-text">Welcome Mubashir</span>
+            <span class="sps-welcome-text">Welcome Abid</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end sps-dropdown-menu" aria-labelledby="dropUser">
             <li><a class="dropdown-item sps-dropdown-item" href="#">
@@ -226,10 +223,16 @@
   </div><!-- /.container-fluid -->
 </nav>
 
- 
+
+<!-- ============================================================
+     MAIN DASHBOARD BODY
+     ============================================================ -->
 <main class="sps-dashboard-body">
   <div class="container-fluid sps-page-container">
- 
+
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 1 — TOGGLE BUTTONS ROW
+         ══════════════════════════════════════════════════════════ -->
     <div class="sps-toggle-row">
       <button type="button" class="sps-btn-toggle sps-btn-toggle--active" id="btnAll"
               aria-pressed="true">
@@ -240,7 +243,12 @@
         Active Only
       </button>
     </div>
- 
+    <!-- /BLOCK 1 -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 2 — DASHBOARD HEADER CARD
+         ══════════════════════════════════════════════════════════ -->
     <div class="sps-header-card">
       <!-- Left: icon + title -->
       <div class="sps-header-card__left">
@@ -270,9 +278,14 @@
         </button>
       </div>
     </div>
-  
+    <!-- /BLOCK 2 -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         BLOCK 3 — FILTER SELECTION PANEL
+         ══════════════════════════════════════════════════════════ -->
     <div class="sps-filter-card">
-    
+      <!-- FIX: Added id="spsFilterForm" and corrected novalidate attr -->
       <form id="spsFilterForm" autocomplete="off" novalidate>
 
         <!-- ── Filter Row 1 ── -->
@@ -481,12 +494,17 @@
   </div><!-- /.sps-page-container -->
 </main>
 
- 
+
+<!-- ============================================================
+     TABLE SECTION
+     ============================================================ -->
 <section class="sps-table-section">
   <div class="container-fluid sps-table-page-container">
     <div class="sps-table-card">
 
-   
+      <!-- ══════════════════════════════════════════════════════
+           LAYER 1 — SEARCH & ACTION BAR
+           ══════════════════════════════════════════════════════ -->
       <div class="sps-action-bar">
 
         <!-- Left: Date Pickers -->
@@ -537,7 +555,10 @@
 
       </div>
       <!-- /LAYER 1 -->
- 
+
+      <!-- ══════════════════════════════════════════════════════
+           LAYER 2 — HR DATA TABLE
+           ══════════════════════════════════════════════════════ -->
       <div class="table-responsive sps-table-responsive">
         <table class="table sps-table" id="hrTable" aria-label="Human Resource Records">
           <thead class="sps-thead">
@@ -616,5 +637,3 @@
 <!-- Custom Scripts -->
 <script src="/JavaScript/script.js"></script>
 <script src="/JavaScript/table.js"></script>
-</body>
- </html>
