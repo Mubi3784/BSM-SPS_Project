@@ -1,0 +1,1172 @@
+<!-- ============================================================
+     SPS-BMS — Employee Detail Page
+     Dependencies: Bootstrap 5, FontAwesome 6, jQuery (via npm)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Detail — SPS-BMS</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Existing Dashboard Stylesheets -->
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/firstThreeDivs.css">
+  <!-- Employee Detail Stylesheet -->
+  <link rel="stylesheet" href="/css/employeeDetail.css">
+</head>
+<body class="ed-page-body">
+
+  <!-- ── Top Navbar (your existing navbar goes here) ── -->
+  <!-- Paste your <nav class="sps-navbar"> block here -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE HEADER
+       ══════════════════════════════════════════════════════ -->
+  <div class="ed-page-header">
+    <div class="ed-page-header__left">
+      <span class="ed-page-header__icon"><i class="fa-solid fa-id-card-clip"></i></span>
+      <h1 class="ed-page-header__title">Employee Detail</h1>
+    </div>
+    <a href="/pages/index.html" class="ed-btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN PAGE CONTAINER
+       ══════════════════════════════════════════════════════ -->
+  <div class="ed-page-container">
+    <form id="employeeDetailForm" novalidate autocomplete="off">
+      <div class="row g-3 align-items-start">
+
+        <!-- ════════════════════════════════════════════════
+             LEFT COLUMN  (col-lg-5)
+             ════════════════════════════════════════════════ -->
+        <div class="col-lg-5">
+
+          <!-- ── CARD: Core Employee Info ── -->
+          <div class="ed-card">
+            <div class="ed-card-header">
+              <h2 class="ed-card-header__title">
+                <i class="fa-solid fa-user"></i> Employee:
+              </h2>
+            </div>
+            <div class="ed-card-body">
+
+              <!-- Name -->
+              <div class="ed-field">
+                <label class="ed-label" for="empName">Name <span class="req">*</span></label>
+                <input type="text" class="ed-input" id="empName" name="name" required placeholder="Full Name">
+                <span class="ed-invalid-feedback">Name is required.</span>
+              </div>
+
+              <!-- Type & Work Status -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empType">Type <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empType" name="type" required>
+                      <option value="" disabled selected>Select</option>
+                      <option>Employee</option>
+                      <option>Associate</option>
+                      <option>Service Provider</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empWorkStatus">Work Status <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empWorkStatus" name="workStatus" required>
+                      <option value="" disabled selected>Select</option>
+                      <option>Full Time</option>
+                      <option>Contract</option>
+                      <option>Internship</option>
+                      <option>PT-Staff</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email & Personal Email -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empEmail">Email <span class="req">*</span></label>
+                  <input type="email" class="ed-input" id="empEmail" name="email" required placeholder="work@company.com">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empPersonalEmail">Personal Email</label>
+                  <input type="email" class="ed-input" id="empPersonalEmail" name="personalEmail" placeholder="personal@email.com">
+                </div>
+              </div>
+
+              <!-- CNIC & Gender -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empCnic">Employee CNIC <span class="req">*</span></label>
+                  <input type="text" class="ed-input" id="empCnic" name="cnic" required placeholder="XXXXX-XXXXXXX-X">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empGender">Gender</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empGender" name="gender">
+                      <option value="" disabled selected>Select</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empDob">Date of Birth <span class="req">*</span></label>
+                  <input type="date" class="ed-input" id="empDob" name="dob" required>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empLinkedin">LinkedIn URL</label>
+                  <input type="url" class="ed-input" id="empLinkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+                </div>
+              </div>
+
+              <!-- Residential Address -->
+              <div class="ed-field">
+                <label class="ed-label" for="empAddress">Residential Address <span class="req">*</span></label>
+                <textarea class="ed-textarea" id="empAddress" name="address" required placeholder="Full residential address..." rows="2"></textarea>
+              </div>
+
+              <!-- Job Title & Business Area -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empJobTitle">Job Title <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empJobTitle" name="jobTitle" required>
+                      <option value="" disabled selected>Select Job Title</option>
+                      <option>Software Engineer</option>
+                      <option>Senior Engineer</option>
+                      <option>Team Lead</option>
+                      <option>Manager</option>
+                      <option>Director</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empBusinessArea">Business Area</label>
+                  <input type="text" class="ed-input" id="empBusinessArea" name="businessArea" placeholder="Business Area">
+                </div>
+              </div>
+
+              <!-- Office No & Mobile No -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empOfficeNo">Office No</label>
+                  <input type="tel" class="ed-input" id="empOfficeNo" name="officeNo" placeholder="+92 XXX XXXXXXX">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empMobileNo">Mobile No <span class="req">*</span></label>
+                  <input type="tel" class="ed-input" id="empMobileNo" name="mobileNo" required placeholder="+92 XXX XXXXXXX">
+                </div>
+              </div>
+
+              <!-- Emergency No & Home No -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empEmergencyNo">Emergency No</label>
+                  <input type="tel" class="ed-input" id="empEmergencyNo" name="emergencyNo" placeholder="+92 XXX XXXXXXX">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empHomeNo">Home No</label>
+                  <input type="tel" class="ed-input" id="empHomeNo" name="homeNo" placeholder="+92 XXX XXXXXXX">
+                </div>
+              </div>
+
+              <!-- Location & Office Location -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empLocation">Location <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empLocation" name="location" required>
+                      <option value="" disabled selected>Select Location</option>
+                      <option value="pk">Pakistan</option>
+                      <option value="ae">UAE</option>
+                      <option value="us">United States</option>
+                      <option value="uk">United Kingdom</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empOfficeLocation">Office Location</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empOfficeLocation" name="officeLocation">
+                      <option value="" disabled selected>Select Office Location</option>
+                      <option>Head Office</option>
+                      <option>Branch A</option>
+                      <option>Branch B</option>
+                      <option>Remote</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Department & Group -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empDepartment">Department <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empDepartment" name="department" required>
+                      <option value="" disabled selected>Select Department</option>
+                      <option>Engineering</option>
+                      <option>Finance</option>
+                      <option>Human Resources</option>
+                      <option>Marketing</option>
+                      <option>Operations</option>
+                      <option>Sales</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empGroup">Group <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empGroup" name="group" required>
+                      <option value="" disabled selected>Select Group</option>
+                      <option>Administration</option>
+                      <option>Operations</option>
+                      <option>Technical</option>
+                      <option>Cloud</option>
+                      <option>Security</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Practice & Hire Source -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empPractice">Practice</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empPractice" name="practice">
+                      <option value="" disabled selected>Select Practice</option>
+                      <option>AppDev</option>
+                      <option>Cloud</option>
+                      <option>Corporate</option>
+                      <option>DevOps</option>
+                      <option>Specialist</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empHireSource">Hire Source</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empHireSource" name="hireSource">
+                      <option value="" disabled selected>Select hire source</option>
+                      <option>LinkedIn</option>
+                      <option>Referral</option>
+                      <option>Job Portal</option>
+                      <option>Direct</option>
+                      <option>Recruitment Agency</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Employee Picture & Company -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empPicture">Employee Picture</label>
+                  <div class="ed-file-wrap">
+                    <button type="button" class="ed-file-btn" data-target="empPicture">Choose File</button>
+                    <span class="ed-file-name" id="empPictureName">No file chosen</span>
+                    <input type="file" class="ed-file-input-hidden" id="empPicture" name="picture" accept="image/*">
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="empCompany">Company <span class="req">*</span></label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empCompany" name="company" required>
+                      <option value="" disabled selected>Select -</option>
+                      <option>SPS</option>
+                      <option>Evercare Technology</option>
+                      <option>Sterilex</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Educational Level & Upload Degree -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empEduLevel">Educational Level</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empEduLevel" name="educationalLevel">
+                      <option value="" disabled selected>Select Educational Level</option>
+                      <option>Matric</option>
+                      <option>Intermediate</option>
+                      <option>Bachelor's</option>
+                      <option>Master's</option>
+                      <option>PhD</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="uploadDegree">Upload Degree</label>
+                  <div class="ed-file-wrap">
+                    <button type="button" class="ed-file-btn" data-target="uploadDegree">Choose File</button>
+                    <span class="ed-file-name" id="uploadDegreeName">No file chosen</span>
+                    <input type="file" class="ed-file-input-hidden" id="uploadDegree" name="degree" accept=".pdf,.jpg,.png">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Field of Studies -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="empFieldStudies">Field of Studies</label>
+                  <div class="ed-select-wrap">
+                    <select class="ed-select" id="empFieldStudies" name="fieldOfStudies">
+                      <option value="" disabled selected>Select Field of Studies</option>
+                      <option>Computer Science</option>
+                      <option>Information Technology</option>
+                      <option>Business Administration</option>
+                      <option>Engineering</option>
+                      <option>Finance</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                  </div>
+                </div>
+                <div class="ed-field"><!-- spacer --></div>
+              </div>
+
+              <!-- CNIC Front & Back -->
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="cnicFront">CNIC Front Picture</label>
+                  <div class="ed-file-wrap">
+                    <button type="button" class="ed-file-btn" data-target="cnicFront">Choose File</button>
+                    <span class="ed-file-name" id="cnicFrontName">No file chosen</span>
+                    <input type="file" class="ed-file-input-hidden" id="cnicFront" name="cnicFront" accept="image/*,.pdf">
+                  </div>
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="cnicBack">CNIC Back Picture</label>
+                  <div class="ed-file-wrap">
+                    <button type="button" class="ed-file-btn" data-target="cnicBack">Choose File</button>
+                    <span class="ed-file-name" id="cnicBackName">No file chosen</span>
+                    <input type="file" class="ed-file-input-hidden" id="cnicBack" name="cnicBack" accept="image/*,.pdf">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Upload Resume -->
+              <div class="ed-field">
+                <label class="ed-label" for="uploadResume">Upload Resume</label>
+                <div class="ed-file-wrap">
+                  <button type="button" class="ed-file-btn" data-target="uploadResume">Choose File</button>
+                  <span class="ed-file-name" id="uploadResumeName">No file chosen</span>
+                  <input type="file" class="ed-file-input-hidden" id="uploadResume" name="resume" accept=".pdf,.doc,.docx">
+                </div>
+              </div>
+
+              <!-- SPS Corporate Checkbox -->
+              <div class="ed-field">
+                <div class="ed-checkbox-row">
+                  <input type="checkbox" id="spsCorporate" name="spsCorporate">
+                  <label class="ed-checkbox-label" for="spsCorporate">SPS Corporate</label>
+                </div>
+              </div>
+
+            </div><!-- /ed-card-body -->
+          </div><!-- /Core Employee Info Card -->
+
+
+          <!-- ── CARD: Guardian / Parent Information ── -->
+          <div class="ed-card">
+            <div class="ed-card-header">
+              <h2 class="ed-card-header__title">
+                <i class="fa-solid fa-people-roof"></i> Guardian / Parent Information:
+              </h2>
+            </div>
+            <div class="ed-card-body">
+              <div class="ed-field">
+                <label class="ed-label" for="guardianName">Parent/Guardian Name</label>
+                <input type="text" class="ed-input" id="guardianName" name="guardianName" placeholder="Full Name">
+              </div>
+              <div class="ed-field">
+                <label class="ed-label" for="guardianContact">Parent Business/Contact</label>
+                <input type="tel" class="ed-input" id="guardianContact" name="guardianContact" placeholder="+92 XXX XXXXXXX">
+              </div>
+              <div class="ed-field">
+                <label class="ed-label" for="guardianAddress">Parent/Guardian Address</label>
+                <textarea class="ed-textarea" id="guardianAddress" name="guardianAddress" placeholder="Guardian's address..." rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── CARD: Employee Education ── -->
+          <div class="ed-card">
+            <div class="ed-card-header">
+              <h2 class="ed-card-header__title">
+                <i class="fa-solid fa-graduation-cap"></i> Employee Education:
+              </h2>
+            </div>
+            <div class="ed-card-body">
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="eduUniversity">University</label>
+                  <input type="text" class="ed-input" id="eduUniversity" name="university" placeholder="University Name">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="eduFieldStudy">Field of Study</label>
+                  <input type="text" class="ed-input" id="eduFieldStudy" name="fieldOfStudy" placeholder="e.g. Computer Science">
+                </div>
+              </div>
+              <div class="ed-form-row">
+                <div class="ed-field">
+                  <label class="ed-label" for="eduPassingYear">Passing Year</label>
+                  <input type="number" class="ed-input" id="eduPassingYear" name="passingYear" placeholder="e.g. 2021" min="1990" max="2030">
+                </div>
+                <div class="ed-field">
+                  <label class="ed-label" for="eduCourse">Course</label>
+                  <input type="text" class="ed-input" id="eduCourse" name="course" placeholder="Degree / Course">
+                </div>
+              </div>
+              <div class="ed-field">
+                <label class="ed-label" for="eduGpa">Grade / GPA</label>
+                <input type="text" class="ed-input" id="eduGpa" name="gpa" placeholder="e.g. 3.8 / 4.0 or A+">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── CARD: Supervisor ── -->
+          <div class="ed-card">
+            <div class="ed-card-header">
+              <h2 class="ed-card-header__title">
+                <i class="fa-solid fa-user-tie"></i> Supervisor:
+              </h2>
+            </div>
+            <div class="ed-card-body">
+              <div class="ed-field">
+                <label class="ed-label" for="supervisorName">Name</label>
+                <div class="ed-select-wrap">
+                  <select class="ed-select" id="supervisorName" name="supervisor">
+                    <option value="" disabled selected>Select Supervisor</option>
+                    <option>Adnan Rasheed</option>
+                    <option>Farrukh Shahzad</option>
+                    <option>Irfan Ullah</option>
+                    <option>M. Ayan Ijaz</option>
+                    <option>Maryam Tasir</option>
+                    <option>Nadeem Masood</option>
+                    <option>Usman Tufail</option>
+                    <option>Zeeshan Zulfiqar</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                </div>
+              </div>
+              <div class="ed-field">
+                <label class="ed-label" for="supervisorEmail">Email</label>
+                <input type="email" class="ed-input" id="supervisorEmail" name="supervisorEmail" placeholder="supervisor@company.com" readonly>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Save Button ── -->
+          <div class="d-flex justify-content-start pt-1 pb-2">
+            <button type="submit" class="ed-btn-save" id="btnSaveEmployee">
+              <i class="fa-solid fa-floppy-disk"></i> Save Employee Details
+            </button>
+          </div>
+
+
+          <!-- ══════════════════════════════════════════════
+               BOTTOM LEFT: Learning & Development
+               ══════════════════════════════════════════════ -->
+          <div class="ed-card ed-bottom-section mt-2">
+            <div class="ed-bottom-section-header">
+              <h3 class="ed-bottom-section-title"><i class="fa-solid fa-book-open me-2 ed-text-blue"></i>Learning and Development:</h3>
+            </div>
+            <div class="ed-table-wrap">
+              <table class="ed-micro-table">
+                <thead>
+                  <tr>
+                    <th>Sr</th>
+                    <th>Course Name</th>
+                    <th>Training Taken</th>
+                    <th>Test Taken</th>
+                  </tr>
+                </thead>
+                <tbody id="learningBody">
+                  <tr class="ed-empty-row"><td colspan="4">No learning records found.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- ── Attachments ── -->
+          <div class="ed-card ed-bottom-section">
+            <div class="ed-bottom-section-header">
+              <h3 class="ed-bottom-section-title"><i class="fa-solid fa-paperclip me-2 ed-text-blue"></i>Attachments:</h3>
+              <a href="#" class="ed-add-link" id="addAttachment"><i class="fa-solid fa-plus"></i> Add New</a>
+            </div>
+            <div class="ed-table-wrap">
+              <table class="ed-micro-table">
+                <thead>
+                  <tr>
+                    <th>Sr</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="attachmentBody">
+                  <tr class="ed-empty-row"><td colspan="3">No attachments found.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- ── Communication Skills ── -->
+          <div class="ed-card ed-bottom-section">
+            <div class="ed-bottom-section-header">
+              <h3 class="ed-bottom-section-title"><i class="fa-solid fa-comments me-2 ed-text-blue"></i>Communication Skills:</h3>
+              <a href="#" class="ed-add-link" id="addCommSkill"><i class="fa-solid fa-plus"></i> Add New</a>
+            </div>
+            <div class="ed-table-wrap">
+              <table class="ed-micro-table">
+                <thead>
+                  <tr>
+                    <th>Sr</th>
+                    <th>Added By</th>
+                    <th>Speaking</th>
+                    <th>Writing</th>
+                    <th>Listening</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="commSkillBody">
+                  <tr class="ed-empty-row"><td colspan="7">No communication skills recorded.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- ── Employee Certifications ── -->
+          <div class="ed-card ed-bottom-section">
+            <div class="ed-bottom-section-header">
+              <h3 class="ed-bottom-section-title"><i class="fa-solid fa-certificate me-2 ed-text-blue"></i>Employee Certifications:</h3>
+              <a href="#" class="ed-add-link" id="addCertification"><i class="fa-solid fa-plus"></i> Add Certification</a>
+            </div>
+            <div class="ed-table-wrap">
+              <table class="ed-micro-table">
+                <thead>
+                  <tr>
+                    <th>Sr</th>
+                    <th>Vendor</th>
+                    <th>Group</th>
+                    <th>Practice</th>
+                    <th>Product</th>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>URL</th>
+                    <th>Type</th>
+                    <th>Completed On</th>
+                  </tr>
+                </thead>
+                <tbody id="certBody">
+                  <tr class="ed-empty-row"><td colspan="10">No certifications found.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- ── Employee Badges ── -->
+          <div class="ed-card ed-bottom-section">
+            <div class="ed-bottom-section-header">
+              <h3 class="ed-bottom-section-title"><i class="fa-solid fa-award me-2 ed-text-blue"></i>Employee Badges:</h3>
+              <a href="#" class="ed-add-link" id="addBadge"><i class="fa-solid fa-plus"></i> Add Badge</a>
+            </div>
+            <div class="ed-table-wrap">
+              <table class="ed-micro-table">
+                <thead>
+                  <tr>
+                    <th>Sr</th>
+                    <th>Vendor</th>
+                    <th>Group</th>
+                    <th>Practice</th>
+                    <th>Product</th>
+                    <th>Title</th>
+                    <th>URL</th>
+                    <th>Completed On</th>
+                  </tr>
+                </thead>
+                <tbody id="badgeBody">
+                  <tr class="ed-empty-row"><td colspan="8">No badges found.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <!-- /LEFT COLUMN -->
+
+
+        <!-- ════════════════════════════════════════════════
+             RIGHT COLUMN  (col-lg-7)
+             ════════════════════════════════════════════════ -->
+        <div class="col-lg-7">
+
+          <!-- ── Job Title Block ── -->
+          <div class="ed-card">
+            <div class="ed-job-title-block">
+              <span class="ed-text-mid ed-fw-600">Job Title:</span>
+              <span class="ed-badge-notfound">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                No job title found.
+              </span>
+            </div>
+
+            <!-- ── Corporate Roles ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">
+                Corporate Roles:
+              </h3>
+              <div class="ed-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Level</th>
+                      <th>Level Title</th>
+                      <th>Rank</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="corpRolesBody">
+                    <tr>
+                      <td><a href="#">Developer</a></td>
+                      <td>2</td>
+                      <td>Associate</td>
+                      <td>—</td>
+                      <td>
+                        <button class="ed-tbl-icon-btn ed-tbl-btn--edit" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                        <button class="ed-tbl-icon-btn ed-tbl-btn--view" title="View"><i class="fa-solid fa-eye"></i></button>
+                        <button class="ed-tbl-icon-btn ed-tbl-btn--green" title="Activate"><i class="fa-solid fa-check"></i></button>
+                        <button class="ed-tbl-icon-btn ed-tbl-btn--del" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Departmental Roles ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">
+                Departmental Roles:
+                <button class="ed-add-btn" id="addDeptRole" title="Add Departmental Role"><i class="fa-solid fa-plus"></i></button>
+              </h3>
+              <div class="ed-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Level</th>
+                      <th>Level Title</th>
+                      <th>Rank</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="deptRolesBody">
+                    <tr class="ed-empty-row"><td colspan="5">No departmental roles assigned.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Employment History ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">
+                Employment History:
+                <button class="ed-add-btn" id="addEmpHistory" title="Add Employment History"><i class="fa-solid fa-plus"></i></button>
+              </h3>
+              <div class="ed-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>S.#</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Job Title</th>
+                      <th>Corp. Role</th>
+                      <th>Dept. Role</th>
+                      <th>Func. Role</th>
+                      <th>Duration</th>
+                      <th>Attach</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="empHistoryBody">
+                    <tr class="ed-empty-row"><td colspan="10">No employment history found.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Department Attributes ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Department Attributes:</h3>
+
+              <!-- Customers -->
+              <h4 class="ed-section-title" style="font-size:0.77rem; margin-top:8px;">
+                Customer:
+                <button class="ed-add-btn" id="addCustomer" title="Add Customer"><i class="fa-solid fa-plus"></i></button>
+              </h4>
+              <div class="ed-table-wrap" style="margin-bottom:12px;">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr><th>ID</th><th>Name</th><th>Action</th></tr>
+                  </thead>
+                  <tbody id="customersBody">
+                    <tr>
+                      <td>1</td><td>Al-Arabia Sugar Mills Limited (AASML)</td>
+                      <td><a href="#">Edit</a></td>
+                    </tr>
+                    <tr>
+                      <td>2</td><td>America Abroad Media</td>
+                      <td><a href="#">Edit</a></td>
+                    </tr>
+                    <tr>
+                      <td>3</td><td>Date Able</td>
+                      <td><a href="#">Edit</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Projects -->
+              <h4 class="ed-section-title" style="font-size:0.77rem;">
+                Projects:
+                <button class="ed-add-btn" id="addProject" title="Add Project"><i class="fa-solid fa-plus"></i></button>
+              </h4>
+              <div class="ed-table-wrap" style="margin-bottom:12px;">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr><th>ID</th><th>Name</th><th>Action</th></tr>
+                  </thead>
+                  <tbody id="projectsBody">
+                    <tr class="ed-empty-row"><td colspan="3">No projects assigned.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Products -->
+              <h4 class="ed-section-title" style="font-size:0.77rem;">
+                Products:
+                <button class="ed-add-btn" id="addProduct" title="Add Product"><i class="fa-solid fa-plus"></i></button>
+              </h4>
+              <div class="ed-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr><th>ID</th><th>Name</th><th>Action</th></tr>
+                  </thead>
+                  <tbody id="productsBody">
+                    <tr class="ed-empty-row"><td colspan="3">No products assigned.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Comp Framework / KPIs ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Comp Framework:</h3>
+              <div class="ed-kpi-bar">
+                <span class="ed-fw-600 ed-fs-xs">KPIs:</span>
+                <div class="ed-select-wrap" style="min-width:120px;">
+                  <select class="ed-select" id="kpiYear" name="kpiYear" style="height:30px;font-size:0.74rem;">
+                    <option>2026 - Q1</option>
+                    <option>2026 - Q2</option>
+                    <option>2025 - Q4</option>
+                    <option>2025 - Q3</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down ed-select-arrow"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── Personal Leadership ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Personal Leadership:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Leadership Incentives</th>
+                      <th>% Multiplier</th>
+                      <th>Practice Multiplier</th>
+                      <th>KPI Target</th>
+                      <th>KPI Actual</th>
+                      <th>Bonus Target</th>
+                      <th>Bonus Actual</th>
+                      <th>Plan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="personalLeadershipBody">
+                    <tr class="ed-empty-row"><td colspan="8">No personal leadership data.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Corporate Leadership ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Corporate Leadership:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>% Multiplier</th>
+                      <th>Practice Multiplier</th>
+                      <th>KPI Target</th>
+                      <th>KPI Actual</th>
+                      <th>Bonus Target</th>
+                      <th>Bonus Actual</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="ed-empty-row"><td colspan="7">No corporate leadership data.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Vendors ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Vendors:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Vendor Name</th>
+                      <th>Practice Multiplier</th>
+                      <th>% Multiplier</th>
+                      <th>KPI Target</th>
+                      <th>KPI Actual</th>
+                      <th>Bonus Target</th>
+                      <th>Bonus Actual</th>
+                      <th>Plan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vendorsBody">
+                    <tr>
+                      <td>1</td><td><a href="#">IBM</a></td>
+                      <td></td><td>
+                        <select class="ed-cell-select" aria-label="Percent Multiplier" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option><option>20%</option></select>
+                      </td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">HPI SD</a></td>
+                      <td></td><td>
+                        <select class="ed-cell-select" aria-label="Percent Multiplier" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option></select>
+                      </td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">Cisco</a></td>
+                      <td></td><td>
+                        <select class="ed-cell-select" aria-label="Percent Multiplier" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option></select>
+                      </td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Products Grid ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Products:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Department</th>
+                      <th>Group</th>
+                      <th>Practice</th>
+                      <th>Vendor</th>
+                      <th>Product Name</th>
+                      <th>Practice Multiplier</th>
+                      <th>% Multiplier</th>
+                      <th>KPI Target</th>
+                    </tr>
+                  </thead>
+                  <tbody id="productsGridBody">
+                    <tr>
+                      <td>1</td><td>Technical</td><td>AI</td><td>Automation</td><td></td>
+                      <td><a href="#">Turbonomic</a></td><td></td>
+                      <td><select class="ed-cell-select" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td>Technical</td><td>AI</td><td>Automation</td><td></td>
+                      <td><a href="#">UiPath Platform</a></td><td></td>
+                      <td><select class="ed-cell-select" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td>Technical</td><td>AI</td><td>Data Science</td><td></td>
+                      <td><a href="#">Jira</a></td><td></td>
+                      <td><select class="ed-cell-select" title="Percent Multiplier"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Services ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Services:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Department</th>
+                      <th>Group</th>
+                      <th>Practice</th>
+                      <th>Vendor</th>
+                      <th>Service Name</th>
+                      <th>Practice Multiplier</th>
+                      <th>% Multiplier</th>
+                      <th>KPI Target</th>
+                      <th>KPI Actual</th>
+                      <th>Bonus Target</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="ed-empty-row"><td colspan="11">No services assigned.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Practices ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Practices:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Department</th>
+                      <th>Group</th>
+                      <th>Practice</th>
+                      <th>Practice Multiplier</th>
+                      <th>% Multiplier</th>
+                      <th>KPI Target</th>
+                    </tr>
+                  </thead>
+                  <tbody id="practicesBody">
+                    <tr>
+                      <td>1</td><td>Corporate</td><td>R &amp; D</td><td><a href="#">Fabrics</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td>Corporate</td><td>R &amp; D</td><td><a href="#">Surgivenie</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td>Sales</td><td>Energy</td><td><a href="#">Energy</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Customers (KPI grid) ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Customers:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Customer Name</th>
+                      <th style="width:36px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="kpiCustomersBody">
+                    <tr>
+                      <td>1</td><td><a href="#">Albert Einstein Health System</a></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">Aqua America, Inc.</a></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">Armstrong Group of Companies</a></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Partners ── -->
+            <div class="ed-right-section">
+              <h3 class="ed-section-title">Partners:</h3>
+              <div class="ed-scroll-table-wrap">
+                <table class="ed-micro-table">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Partner Name</th>
+                      <th>Practice Multiplier</th>
+                      <th>% Multiplier</th>
+                      <th>KPI Target</th>
+                      <th>KPI Actual</th>
+                      <th>Bonus Target</th>
+                      <th style="width:36px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="partnersBody">
+                    <tr>
+                      <td>1</td><td><a href="#">CAS/Seven</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td><td></td><td></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">TechData</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td><td></td><td></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>101</td><td><a href="#">Ingram Micro</a></td><td></td>
+                      <td><select class="ed-cell-select"><option value="">Select</option><option>10%</option><option>15%</option></select></td>
+                      <td></td><td></td><td></td>
+                      <td><button class="ed-tbl-icon-btn ed-tbl-btn--del"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ── Employee Loaded Cost ── -->
+            <div class="ed-cost-panel">
+              <div class="ed-cost-panel-header">
+                <h3 class="ed-cost-panel-title">Employee Loaded Cost (Q1 - 2026)</h3>
+                <div class="ed-cost-meta">
+                  <span>Name: <a href="#" id="costName">—</a></span>
+                  <span>|</span>
+                  <span>Location: <a href="#" id="costLocation">—</a></span>
+                  <button type="button" class="ed-tbl-icon-btn ed-tbl-btn--view" style="width:22px;height:22px;" title="Refresh"><i class="fa-solid fa-rotate"></i></button>
+                </div>
+              </div>
+              <div class="ed-cost-body">
+                <p class="ed-cost-note">* All Inputs are based on Annual Values</p>
+                <span class="ed-cost-loaded-label">Loaded Rate:</span>
+
+                <div class="ed-cost-grid">
+                  <!-- Base Hourly Rate -->
+                  <div class="ed-cost-row-label">Base Hourly Rate:</div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$" value="0" min="0" step="0.01" id="costBaseRate">
+                  </div>
+                  <div></div>
+
+                  <!-- Individual Load -->
+                  <div class="ed-cost-row-label">
+                    <i class="fa-solid fa-plus ed-text-blue" style="font-size:0.6rem;"></i>
+                    <a href="#" style="color:var(--ed-blue);text-decoration:none;font-size:0.74rem;">Individual Load.</a>
+                  </div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$0.00" value="0.00" min="0" step="0.01" id="costIndividualLoad">
+                  </div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$0.00" value="0.00" min="0" step="0.01" disabled>
+                  </div>
+
+                  <!-- Practice Load -->
+                  <div class="ed-cost-row-label">
+                    <a href="#" style="color:var(--ed-blue);text-decoration:none;font-size:0.74rem;">Practice Load.</a>
+                  </div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$0.00" value="0.00" min="0" step="0.01" id="costPracticeLoad">
+                  </div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$0.00" value="0.00" min="0" step="0.01" disabled>
+                    <i class="fa-solid fa-circle-info ed-text-muted" style="font-size:0.68rem; margin-top:3px;cursor:pointer;" title="Includes all overhead components"></i>
+                  </div>
+
+                  <div class="ed-cost-divider"></div>
+
+                  <!-- Loaded Rate -->
+                  <div class="ed-cost-row-label ed-fw-600">Loaded Rate:</div>
+                  <div>
+                    <input type="number" class="ed-cost-input" placeholder="$0.00" value="0.00" disabled id="costLoadedRate">
+                  </div>
+                  <div></div>
+
+                  <!-- Loaded Rate Last Year -->
+                  <div class="ed-cost-row-label ed-fw-600">Loaded Rate (Last Year):</div>
+                  <div>
+                    <input type="text" class="ed-cost-input" placeholder="$" disabled id="costLoadedRateLastYear">
+                  </div>
+                  <div></div>
+                </div>
+
+                <button type="button" class="ed-btn-update-cost" id="btnUpdateLoadedCost">
+                  <i class="fa-solid fa-calculator"></i> Update Loaded Rate
+                </button>
+
+              </div><!-- /cost-body -->
+            </div><!-- /cost-panel -->
+
+          </div><!-- /ed-card right -->
+        </div>
+        <!-- /RIGHT COLUMN -->
+
+      </div><!-- /row -->
+    </form>
+  </div><!-- /ed-page-container -->
+
+
+  <!-- jQuery -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Employee Detail JS -->
+  <script src="/JavaScript/employeeDetail.js"></script>
+</body>
+</html>

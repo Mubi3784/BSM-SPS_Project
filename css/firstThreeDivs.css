@@ -1,8 +1,4 @@
-/* ============================================================
-   SPS-BMS HR Dashboard — firstThreeDivs.css
-   ============================================================ */
 
-/* ── CSS Variables ──────────────────────────────────────────── */
 :root {
   --f-blue:             #0076A8;
   --f-blue-dark:        #005f87;
@@ -23,24 +19,19 @@
   --f-font:             "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --f-transition:       0.18s ease;
 }
-
-/* ── Page Body Background ──────────────────────────────────── */
+ 
 body,
 .sps-dashboard-body {
   background-color: var(--f-bg-page);
   font-family: var(--f-font);
 }
-
-/* ── Page Container ────────────────────────────────────────── */
+ 
 .sps-page-container {
   padding: 18px 20px 24px;
   max-width: 100%;
 }
 
-
-/* ════════════════════════════════════════════════════════════
-   BLOCK 1 — TOGGLE BUTTONS ROW
-   ════════════════════════════════════════════════════════════ */
+ 
 .sps-toggle-row {
   display: flex;
   align-items: center;
@@ -96,10 +87,7 @@ body,
   outline: none;
 }
 
-
-/* ════════════════════════════════════════════════════════════
-   BLOCK 2 — DASHBOARD HEADER CARD
-   ════════════════════════════════════════════════════════════ */
+ 
 .sps-header-card {
   background-color: var(--f-bg-card);
   border: 1px solid var(--f-border);
@@ -212,10 +200,7 @@ body,
 }
 .sps-btn-add i { font-size: 0.72rem; }
 
-
-/* ════════════════════════════════════════════════════════════
-   BLOCK 3 — FILTER SELECTION PANEL
-   ════════════════════════════════════════════════════════════ */
+ 
 .sps-filter-card {
   background-color: var(--f-bg-card);
   border: 1px solid var(--f-border);
@@ -367,11 +352,7 @@ body,
   outline: none;
 }
 .sps-btn-filter-clear i { font-size: 0.72rem; }
-
-
-/* ════════════════════════════════════════════════════════════
-   RESPONSIVE TWEAKS
-   ════════════════════════════════════════════════════════════ */
+ 
 @media (max-width: 991.98px) {
   .sps-page-container { padding: 14px 14px 20px; }
   .sps-header-card    { padding: 12px 16px; }

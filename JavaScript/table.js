@@ -1,38 +1,8 @@
-/**
- * SPS-BMS HR Dashboard — table.js
- * Requires: jQuery 3+, Bootstrap 5
- *
- * Architecture:
- *  - masterData[]       → full dataset (loaded from JSON or hardcoded seed)
- *  - filteredData[]     → subset after all filters applied
- *  - currentPage / perPage control pagination slice of filteredData
- *
- * Modules:
- *  1.  Seed data — hardcoded fallback while no JSON is uploaded
- *  2.  JSON file upload — FileReader → parse → reload table
- *  3.  Row renderer — builds <tr> HTML from an employee object
- *  4.  Badge helpers — colour-coded pills for jobStatus, EMG, status
- *  5.  Master filter engine — merges search text + panel selects + toggle mode
- *  6.  Search bar handlers (button click + Enter key + live input)
- *  7.  Panel filter listener (sps:filterChanged event from script.js)
- *  8.  Toggle mode listener (sps:filterMode event — All vs Active Only)
- *  9.  Reset button
- * 10.  Export button (CSV)
- * 11.  Pagination — fully dynamic, regenerated after every filter change
- * 12.  Show-entries dropdown
- * 13.  Master checkbox + row checkbox sync
- * 14.  Row highlight on checkbox selection
- * 15.  Action (⋮) context menu
- * 16.  Name link click handler
- * 17.  Date input validation
- * 18.  Toast notification system
- */
+ 
 
 $(function () {
 
-  /* ═══════════════════════════════════════════════════════════════
-     1. SEED DATA — used until user uploads a JSON file
-     ═══════════════════════════════════════════════════════════════ */
+   
   var SEED_DATA = [
     { name:'Abdul Haseeb',    type:'Employee',         jobStatus:'Full time',  manager:'Irfan Ullah',      company:'SPS',                  team:'Operations', group:'Administration', practice:'PK',              location:'PK', mobileNo:'+92 311 5674101', email:'abdul.haseeb@gmail.com',       emergencyAccess:'No',  form:true,  status:'Active'   },
     { name:'Abid Ullah',      type:'Employee',         jobStatus:'Internship', manager:'M. Ayan Ijaz',     company:'SPS',                  team:'Technical',  group:'Operations',    practice:'AppDev',          location:'PK', mobileNo:'+92 311 5121187', email:'abid.ullah@gmnil.com',         emergencyAccess:'Yes', form:false, status:'Active'   },
@@ -46,18 +16,15 @@ $(function () {
     { name:'Ahsan Gumia',     type:'Associate',        jobStatus:'Full time',  manager:'Usman Tufail',     company:'SPS',                  team:'Operations', group:'Accounting',    practice:'Corporate',       location:'PK', mobileNo:'+92 311 5674101', email:'ahsan.gumia@sparat.com',       emergencyAccess:'Yes', form:false, status:'Active'   }
   ];
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     STATE
-     ═══════════════════════════════════════════════════════════════ */
+ 
   var state = {
-    masterData   : SEED_DATA.slice(),   // full dataset
-    filteredData : SEED_DATA.slice(),   // post-filter subset
+    masterData   : SEED_DATA.slice(),  
+    filteredData : SEED_DATA.slice(),    
     currentPage  : 1,
     perPage      : 10,
     searchQuery  : '',
-    panelFilters : {},                  // keyed by select name
-    activeMode   : 'all'               // 'all' | 'active'
+    panelFilters : {},               
+    activeMode   : 'all'               
   };
 
   /* Cached jQuery elements */
@@ -70,10 +37,7 @@ $(function () {
   var $dateTo       = $('#dateTo');
   var $pagination   = $('#paginationList');
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     2. JSON FILE UPLOAD
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $('#jsonFileInput').on('change', function () {
     var file = this.files[0];
     if (!file) return;
@@ -144,7 +108,7 @@ $(function () {
       };
     });
 
-    // Reset all filters and re-render
+  
     state.searchQuery  = '';
     state.panelFilters = {};
     state.activeMode   = 'all';
@@ -154,10 +118,7 @@ $(function () {
     applyAllFilters();
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     3. ROW RENDERER
-     ═══════════════════════════════════════════════════════════════ */
+ 
   function buildRow(emp) {
     var jobBadge    = buildJobStatusBadge(emp.jobStatus);
     var emgBadge    = buildEmgBadge(emp.emergencyAccess);
@@ -218,10 +179,7 @@ $(function () {
     renderPagination();
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     4. BADGE HELPERS
-     ═══════════════════════════════════════════════════════════════ */
+ 
   function buildJobStatusBadge(status) {
     var s = (status || '').toLowerCase().trim();
     var cls = 'sps-badge ';
@@ -248,11 +206,7 @@ $(function () {
            escapeHtml(status) + '</span>';
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     5. MASTER FILTER ENGINE
-     All filters are ANDed together.
-     ═══════════════════════════════════════════════════════════════ */
+ 
   function applyAllFilters() {
     var query  = state.searchQuery.toLowerCase();
     var pf     = state.panelFilters;
@@ -337,19 +291,11 @@ $(function () {
     applyAllFilters();
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     7. PANEL FILTER LISTENER (fired by script.js)
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $(document).on('sps:filterChanged', function (e, filters) {
     state.panelFilters = filters || {};
     applyAllFilters();
-  });
-
-
-  /* ═══════════════════════════════════════════════════════════════
-     8. TOGGLE MODE LISTENER (All / Active Only)
-     ═══════════════════════════════════════════════════════════════ */
+  }); 
   $(document).on('sps:filterMode', function (e, mode) {
     state.activeMode = mode; // 'all' or 'active'
     applyAllFilters();
@@ -359,10 +305,7 @@ $(function () {
     );
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     9. RESET BUTTON
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $('#btnReset').on('click', function () {
     /* Clear search */
     $globalSearch.val('');
@@ -395,10 +338,7 @@ $(function () {
     showToast('All filters have been reset.', 'info');
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     10. EXPORT BUTTON (CSV)
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $('#btnExport').on('click', function () {
     animateButton($(this));
 
@@ -446,10 +386,7 @@ $(function () {
     });
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     11. PAGINATION — fully dynamic
-     ═══════════════════════════════════════════════════════════════ */
+ 
   function renderPagination() {
     var totalPages = Math.ceil(state.filteredData.length / state.perPage) || 1;
     var cur        = state.currentPage;
@@ -503,11 +440,7 @@ $(function () {
 
     renderPage();
   });
-
-
-  /* ═══════════════════════════════════════════════════════════════
-     12. SHOW-ENTRIES DROPDOWN
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $showEntries.on('change', function () {
     state.perPage     = parseInt($(this).val(), 10);
     state.currentPage = 1;
@@ -515,10 +448,7 @@ $(function () {
     showToast('Showing ' + state.perPage + ' entries per page.', 'info');
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     13. MASTER CHECKBOX
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $masterCheck.on('change', function () {
     var checked = $(this).prop('checked');
     $tableBody.find('.sps-row-check').each(function () {
@@ -549,10 +479,7 @@ $(function () {
     }
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     15. ACTION (⋮) CONTEXT MENU
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $tableBody.on('click', '.sps-action-btn', function (e) {
     e.stopPropagation();
     $('.sps-context-menu').remove();
@@ -609,20 +536,13 @@ $(function () {
         break;
     }
   }
-
-
-  /* ═══════════════════════════════════════════════════════════════
-     16. NAME LINK
-     ═══════════════════════════════════════════════════════════════ */
+ 
   $tableBody.on('click', '.sps-name-link', function (e) {
     e.preventDefault();
     showToast('Opening profile for ' + $(this).text().trim(), 'info');
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     17. DATE INPUT VALIDATION
-     ═══════════════════════════════════════════════════════════════ */
+ 
   var DATE_RE = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
 
   $('.sps-date-input').on('blur', function () {
@@ -637,10 +557,7 @@ $(function () {
     $(this).removeClass('sps-date-input--error');
   });
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     HELPERS
-     ═══════════════════════════════════════════════════════════════ */
+ 
   function updateEntryCount(total, from, to) {
     $entryCount.html(
       'Showing <strong>' + from + '</strong> to <strong>' + to +
@@ -667,10 +584,7 @@ $(function () {
     };
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     18. TOAST NOTIFICATION
-     ═══════════════════════════════════════════════════════════════ */
+ 
   var $toastContainer;
 
   function ensureToastContainer() {
@@ -713,19 +627,12 @@ $(function () {
     setTimeout(function () { $toast.remove(); }, 350);
   }
 
-
-  /* ═══════════════════════════════════════════════════════════════
-     INIT — render seed data on page load
-     ═══════════════════════════════════════════════════════════════ */
+ 
   applyAllFilters();
 
 }); // end document ready
-
-
-/* ══════════════════════════════════════════════════════════════════
-   INJECTED DYNAMIC STYLES
-   (button pulse, date error, context menu, toast)
-   ══════════════════════════════════════════════════════════════════ */
+ 
+ 
 (function injectDynamicStyles() {
   var css = `
 /* ── Button pulse ── */
